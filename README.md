@@ -1,4 +1,4 @@
-<img align="right" src="Assets/icon.png" alt="dudelings_icon" width="64" height="64">
+<img align="right" src="icon.png" alt="dudelings_icon" width="64" height="64">
 
 # Dudelings
 This is the Dudelings `1.2.1` repo project folder for `Godot 3.6`.
