@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://GameUI/MenuElements/button_element.gd" type="Script" id=1]
+
+[node name="ButtonElement" type="Button"]
+margin_right = 150.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 150, 72 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+action_mode = 0
+text = "TEXT"
+align = 0
+script = ExtResource( 1 )

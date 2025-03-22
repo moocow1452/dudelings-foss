@@ -1,0 +1,176 @@
+[gd_scene load_steps=32 format=2]
+
+[ext_resource path="res://GameComponents/ArenaPickups/HideHighlightPickup/hide_highlight_pickup.gd" type="Script" id=2]
+[ext_resource path="res://Assets/GameComponents/ArenaPickups/HideHighlightPickup/art/hide_highlight_pickup.png" type="Texture" id=3]
+
+[sub_resource type="AtlasTexture" id=23]
+flags = 5
+atlas = ExtResource( 3 )
+region = Rect2( 640, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=24]
+flags = 5
+atlas = ExtResource( 3 )
+region = Rect2( 720, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=25]
+flags = 5
+atlas = ExtResource( 3 )
+region = Rect2( 800, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=26]
+flags = 5
+atlas = ExtResource( 3 )
+region = Rect2( 880, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=27]
+flags = 5
+atlas = ExtResource( 3 )
+region = Rect2( 960, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=28]
+flags = 5
+atlas = ExtResource( 3 )
+region = Rect2( 1040, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=29]
+flags = 5
+atlas = ExtResource( 3 )
+region = Rect2( 1120, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=30]
+flags = 5
+atlas = ExtResource( 3 )
+region = Rect2( 1200, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=31]
+flags = 5
+atlas = ExtResource( 3 )
+region = Rect2( 1280, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=32]
+flags = 5
+atlas = ExtResource( 3 )
+region = Rect2( 640, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=33]
+flags = 5
+atlas = ExtResource( 3 )
+region = Rect2( 1360, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=34]
+flags = 5
+atlas = ExtResource( 3 )
+region = Rect2( 1440, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=35]
+flags = 5
+atlas = ExtResource( 3 )
+region = Rect2( 1520, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=36]
+flags = 5
+atlas = ExtResource( 3 )
+region = Rect2( 1600, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=37]
+flags = 5
+atlas = ExtResource( 3 )
+region = Rect2( 1680, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=38]
+flags = 5
+atlas = ExtResource( 3 )
+region = Rect2( 1760, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=39]
+flags = 5
+atlas = ExtResource( 3 )
+region = Rect2( 1840, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=40]
+flags = 5
+atlas = ExtResource( 3 )
+region = Rect2( 640, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=41]
+flags = 5
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=42]
+flags = 5
+atlas = ExtResource( 3 )
+region = Rect2( 80, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=43]
+flags = 5
+atlas = ExtResource( 3 )
+region = Rect2( 160, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=44]
+flags = 5
+atlas = ExtResource( 3 )
+region = Rect2( 240, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=45]
+flags = 5
+atlas = ExtResource( 3 )
+region = Rect2( 320, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=46]
+flags = 5
+atlas = ExtResource( 3 )
+region = Rect2( 400, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=47]
+flags = 5
+atlas = ExtResource( 3 )
+region = Rect2( 480, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=48]
+flags = 5
+atlas = ExtResource( 3 )
+region = Rect2( 560, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=49]
+flags = 5
+atlas = ExtResource( 3 )
+region = Rect2( 640, 0, 80, 80 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), null ],
+"loop": false,
+"name": "activate",
+"speed": 25.0
+}, {
+"frames": [ SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), null ],
+"loop": false,
+"name": "cancel",
+"speed": 25.0
+}, {
+"frames": [ SubResource( 40 ) ],
+"loop": true,
+"name": "default",
+"speed": 25.0
+}, {
+"frames": [ null, SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ) ],
+"loop": false,
+"name": "spawn",
+"speed": 25.0
+} ]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 40.0
+
+[node name="HideHighlightPickup" type="Area2D"]
+collision_layer = 16
+collision_mask = 22
+script = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )

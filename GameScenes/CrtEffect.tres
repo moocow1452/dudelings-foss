@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://scripts/pure_scanline.shader" type="Shader" id=1]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/scanline_count = 180.0
+shader_param/effect_intensity = 0.5
+shader_param/red_abberation = 0.0
+shader_param/green_abberation = 2.0
+shader_param/blue_abberation = -2.0

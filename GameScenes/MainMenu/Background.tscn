@@ -1,0 +1,175 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/GameScenes/MainMenu/art/beach-portrait.png" type="Texture" id=1]
+[ext_resource path="res://Assets/GameScenes/MainMenu/art/destination-portrait.png" type="Texture" id=2]
+[ext_resource path="res://Assets/GameScenes/MainMenu/art/gym-portrait.png" type="Texture" id=3]
+[ext_resource path="res://Assets/GameScenes/MainMenu/art/infield-portrait.png" type="Texture" id=4]
+[ext_resource path="res://Assets/GameScenes/MainMenu/art/streets-portrait.png" type="Texture" id=5]
+[ext_resource path="res://Assets/GameScenes/MainMenu/art/stadium-portrait.png" type="Texture" id=6]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+
+[sub_resource type="Animation" id=2]
+resource_name = "SlideshowNoDestination"
+length = 51.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Stadium:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 9.9, 50 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -12, 283 ), Vector2( -12, 116.082 ), Vector2( -12, 283 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Beach:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 9.2, 21.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 134, 100 ), Vector2( -69.6697, 122.404 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Beach:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 9.2, 10, 20.1, 21.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Gym:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 19, 20.2, 30.2, 30.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Gym:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 19, 30 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -12, 221 ), Vector2( -12, 100 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Streets:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 29.1, 30, 40, 41.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Streets:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 29.2, 43.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -19, -190 ), Vector2( -19, 100 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Infield:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.1, 39, 39.9, 50, 51.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Infield:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 39, 50.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 100, -22.651 ), Vector2( -100, 100 ) ]
+}
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 652, 357 )
+
+[node name="Stadium" type="Sprite" parent="."]
+position = Vector2( -12, 259.885 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+
+[node name="Beach" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 49.3382, 109.313 )
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 1 )
+
+[node name="Gym" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -12, 143.162 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+
+[node name="Streets" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -19, 92.6186 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+
+[node name="Infield" type="Sprite" parent="."]
+position = Vector2( 8.45632, 33.4886 )
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 4 )
+
+[node name="Destination" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -6, 226 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -652.0
+margin_top = -357.0
+margin_right = 628.0
+margin_bottom = 363.0
+color = Color( 0, 0, 0, 0.0823529 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/SlideshowNoDestination = SubResource( 2 )

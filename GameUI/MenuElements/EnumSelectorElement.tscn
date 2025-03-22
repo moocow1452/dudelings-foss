@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://GameUI/MenuElements/resources/dudelings_ui_theme.tres" type="Theme" id=1]
+[ext_resource path="res://GameUI/MenuElements/enum_selector_element.gd" type="Script" id=2]
+
+[node name="EnumSelectorElement" type="Label"]
+margin_right = 40.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+theme = ExtResource( 1 )
+text = "TEXT"
+align = 1
+valign = 1
+script = ExtResource( 2 )

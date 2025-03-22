@@ -1,0 +1,986 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "HBoxContainer",
+"class": "ActivePickupIndicator",
+"language": "GDScript",
+"path": "res://PlayerHUD/active_pickup_indicator.gd"
+}, {
+"base": "Sprite",
+"class": "AdBoard",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaBackgrounds/scenes/AdBoards/ad_board.gd"
+}, {
+"base": "Node",
+"class": "AdBoardPlayer",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaBackgrounds/scenes/AdBoards/ad_board_player.gd"
+}, {
+"base": "DudelingAIInputs",
+"class": "AggressiveAI",
+"language": "GDScript",
+"path": "res://GameComponents/DudelingRow/aggressive_ai.gd"
+}, {
+"base": "Node",
+"class": "AnnouncerSystem",
+"language": "GDScript",
+"path": "res://GameComponents/AnnouncerSystem/announcer_system.gd"
+}, {
+"base": "Node2D",
+"class": "AreaPickupSpawningArea",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaPickups/SpawningArea/arena_pickup_spawning_area.gd"
+}, {
+"base": "Node2D",
+"class": "ArenaBackground",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaBackgrounds/arena_background.gd"
+}, {
+"base": "Area2D",
+"class": "ArenaGoal",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaGoals/arena_goal.gd"
+}, {
+"base": "Area2D",
+"class": "ArenaPickup",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaPickups/arena_pickup.gd"
+}, {
+"base": "Sprite",
+"class": "BackgroundCrowd",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaBackgrounds/scenes/BackgroundCrowd/background_crowd.gd"
+}, {
+"base": "DudelingAIInputs",
+"class": "BalancedAI",
+"language": "GDScript",
+"path": "res://GameComponents/DudelingRow/balanced_ai.gd"
+}, {
+"base": "Control",
+"class": "BaseMenu",
+"language": "GDScript",
+"path": "res://GameUI/Menus/base_menu.gd"
+}, {
+"base": "ArenaBackground",
+"class": "BeachBackground",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaBackgrounds/Beach/beach_background.gd"
+}, {
+"base": "ArenaPickup",
+"class": "BiggerBallPickup",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaPickups/BiggerBallPickup/bigger_ball_pickup.gd"
+}, {
+"base": "TimedArenaPickup",
+"class": "BlackHolePickup",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaPickups/BlackHolePickup/black_hole_pickup.gd"
+}, {
+"base": "HBoxContainer",
+"class": "ButtonContextBar",
+"language": "GDScript",
+"path": "res://GameUI/ButtonContextBar/button_context_bar.gd"
+}, {
+"base": "BaseButton",
+"class": "ButtonElement",
+"language": "GDScript",
+"path": "res://GameUI/MenuElements/button_element.gd"
+}, {
+"base": "ButtonElement",
+"class": "CheckBoxElement",
+"language": "GDScript",
+"path": "res://GameUI/MenuElements/check_box_element.gd"
+}, {
+"base": "ButtonElement",
+"class": "CheckButtonElement",
+"language": "GDScript",
+"path": "res://GameUI/MenuElements/check_button_element.gd"
+}, {
+"base": "ArenaBackground",
+"class": "CityBackground",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaBackgrounds/City/city_background.gd"
+}, {
+"base": "Node2D",
+"class": "CityBuilding",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaBackgrounds/City/scenes/city_building.gd"
+}, {
+"base": "Node2D",
+"class": "CityStadium",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaBackgrounds/City/scenes/city_stadium.gd"
+}, {
+"base": "ArenaGoal",
+"class": "ClassicArenaGoal",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaGoals/classic_arena_goal.gd"
+}, {
+"base": "Reference",
+"class": "ConfigDataParser",
+"language": "GDScript",
+"path": "res://scripts/config_data_parser.gd"
+}, {
+"base": "SubMenu",
+"class": "ConfirmMessage",
+"language": "GDScript",
+"path": "res://GameUI/Menus/SubMenus/ConfirmMessage/confirm_message_landing.gd"
+}, {
+"base": "SubMenu",
+"class": "ConfirmMessageLanding",
+"language": "GDScript",
+"path": "res://GameUI/Menus/SubMenus/ConfirmMessage/confirm_message.gd"
+}, {
+"base": "HBoxContainer",
+"class": "ContextOption",
+"language": "GDScript",
+"path": "res://GameUI/ButtonContextBar/scenes/context_option.gd"
+}, {
+"base": "Label",
+"class": "CountdownLabel",
+"language": "GDScript",
+"path": "res://PlayerHUD/countdown_label.gd"
+}, {
+"base": "SubMenu",
+"class": "CreditsSubMenu",
+"language": "GDScript",
+"path": "res://GameUI/Menus/SubMenus/CreditsSubMenu/credits_sub_menu.gd"
+}, {
+"base": "Node",
+"class": "CrowdControl",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaBackgrounds/scenes/BackgroundCrowd/crowd_control.gd"
+}, {
+"base": "CanvasLayer",
+"class": "CrtEffectLayer",
+"language": "GDScript",
+"path": "res://GameScenes/crt_effect_layer.gd"
+}, {
+"base": "Control",
+"class": "CustomFontLoader",
+"language": "GDScript",
+"path": "res://Assets/GameUI/fonts/custom/custom_font_loader.gd"
+}, {
+"base": "Timer",
+"class": "CycleTimer",
+"language": "GDScript",
+"path": "res://scripts/cycle_timer.gd"
+}, {
+"base": "Node2D",
+"class": "DaySky",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaBackgrounds/scenes/Sky/day_sky.gd"
+}, {
+"base": "DudelingAIInputs",
+"class": "DefensiveAI",
+"language": "GDScript",
+"path": "res://GameComponents/DudelingRow/defensive_ai.gd"
+}, {
+"base": "ArenaBackground",
+"class": "DestinationBackground",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaBackgrounds/Destination/destination_background.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Dudeling",
+"language": "GDScript",
+"path": "res://GameComponents/Dudelings/dudeling.gd"
+}, {
+"base": "Node",
+"class": "DudelingAIInputs",
+"language": "GDScript",
+"path": "res://GameComponents/DudelingRow/dudeling_ai_inputs.gd"
+}, {
+"base": "DudelingPlayerInputs",
+"class": "DudelingControllerInputs",
+"language": "GDScript",
+"path": "res://GameComponents/DudelingRow/dudeling_controller_inputs.gd"
+}, {
+"base": "Sprite",
+"class": "DudelingFist",
+"language": "GDScript",
+"path": "res://GameComponents/Dudelings/dudeling_fist.gd"
+}, {
+"base": "DudelingPlayerInputs",
+"class": "DudelingKeyboardInputs",
+"language": "GDScript",
+"path": "res://GameComponents/DudelingRow/dudeling_keyboard_inputs.gd"
+}, {
+"base": "Node",
+"class": "DudelingPlayerInputs",
+"language": "GDScript",
+"path": "res://GameComponents/DudelingRow/dudeling_player_inputs.gd"
+}, {
+"base": "Node2D",
+"class": "DudelingRow",
+"language": "GDScript",
+"path": "res://GameComponents/DudelingRow/dudeling_row.gd"
+}, {
+"base": "AnimatedSprite",
+"class": "DudelingSnapCloud",
+"language": "GDScript",
+"path": "res://GameComponents/Dudelings/dudeling_snap_cloud.gd"
+}, {
+"base": "Label",
+"class": "EnumSelectorElement",
+"language": "GDScript",
+"path": "res://GameUI/MenuElements/enum_selector_element.gd"
+}, {
+"base": "ArenaPickup",
+"class": "ExtraBallPickup",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaPickups/ExtraBallPickup/extra_ball_pickup.gd"
+}, {
+"base": "Node2D",
+"class": "Firework",
+"language": "GDScript",
+"path": "res://GameComponents/Fireworks/scenes/firework.gd"
+}, {
+"base": "ColorRect",
+"class": "Fireworks",
+"language": "GDScript",
+"path": "res://GameComponents/Fireworks/fireworks.gd"
+}, {
+"base": "AnimatedSprite",
+"class": "FlyingBirds",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaBackgrounds/scenes/Sky/scenes/flying_birds.gd"
+}, {
+"base": "SubMenu",
+"class": "FullGameScene",
+"language": "GDScript",
+"path": "res://GameUI/Menus/SubMenus/FullGamePopup/full_game_scene.gd"
+}, {
+"base": "Node",
+"class": "GameArena",
+"language": "GDScript",
+"path": "res://GameScenes/GameArena/game_arena.gd"
+}, {
+"base": "RigidBody2D",
+"class": "GameBall",
+"language": "GDScript",
+"path": "res://GameComponents/GameBalls/game_ball.gd"
+}, {
+"base": "Node2D",
+"class": "GameBallSpawningArea",
+"language": "GDScript",
+"path": "res://GameComponents/GameBalls/SpawningArea/game_ball_spawning_area.gd"
+}, {
+"base": "Camera2D",
+"class": "GameCamera",
+"language": "GDScript",
+"path": "res://GameScenes/GameArena/game_camera.gd"
+}, {
+"base": "Node2D",
+"class": "GameField",
+"language": "GDScript",
+"path": "res://GameComponents/GameFields/game_field.gd"
+}, {
+"base": "SubMenu",
+"class": "GameLocationSubMenu",
+"language": "GDScript",
+"path": "res://GameScenes/SelectionScreen/game_location_sub_menu.gd"
+}, {
+"base": "SubMenu",
+"class": "GameOptionsSubMenu",
+"language": "GDScript",
+"path": "res://GameScenes/SelectionScreen/game_options_sub_menu.gd"
+}, {
+"base": "BaseMenu",
+"class": "GameOverMenu",
+"language": "GDScript",
+"path": "res://GameUI/Menus/GameOverMenu/game_over_menu.gd"
+}, {
+"base": "BaseMenu",
+"class": "GamePausedMenu",
+"language": "GDScript",
+"path": "res://GameUI/Menus/GamePausedMenu/game_paused_menu.gd"
+}, {
+"base": "ConfigDataParser",
+"class": "GameSettingsData",
+"language": "GDScript",
+"path": "res://scripts/game_settings_data.gd"
+}, {
+"base": "SubMenu",
+"class": "GameTypeSubMenu",
+"language": "GDScript",
+"path": "res://GameScenes/SelectionScreen/game_type_sub_menu.gd"
+}, {
+"base": "ArenaBackground",
+"class": "GymBackground",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaBackgrounds/Gym/gym_background.gd"
+}, {
+"base": "TimedArenaPickup",
+"class": "HideHighlightPickup",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaPickups/HideHighlightPickup/hide_highlight_pickup.gd"
+}, {
+"base": "GameField",
+"class": "HoopField",
+"language": "GDScript",
+"path": "res://GameComponents/GameFields/hoop_field.gd"
+}, {
+"base": "SubMenu",
+"class": "HowToPlaySubMenu",
+"language": "GDScript",
+"path": "res://GameUI/Menus/SubMenus/HowToPlaySubMenu/how_to_play_sub_menu.gd"
+}, {
+"base": "ArenaBackground",
+"class": "InfieldBackground",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaBackgrounds/Infield/infield_background.gd"
+}, {
+"base": "Node",
+"class": "MainMenu",
+"language": "GDScript",
+"path": "res://GameScenes/MainMenu/main_menu.gd"
+}, {
+"base": "MenuButton",
+"class": "MenuButtonElement",
+"language": "GDScript",
+"path": "res://GameUI/MenuElements/menu_button_element.gd"
+}, {
+"base": "Panel",
+"class": "MenuELementPanel",
+"language": "GDScript",
+"path": "res://GameUI/MenuElements/menu_element_panel.gd"
+}, {
+"base": "Sprite",
+"class": "MiniDudeling",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaBackgrounds/scenes/MiniDudeling/mini_dudeling.gd"
+}, {
+"base": "Node2D",
+"class": "MovingClouds",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaBackgrounds/scenes/Sky/scenes/moving_clouds.gd"
+}, {
+"base": "ArenaPickup",
+"class": "MysteryPickup",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaPickups/MysteryPickup/mystery_pickup.gd"
+}, {
+"base": "Node2D",
+"class": "NightSky",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaBackgrounds/scenes/Sky/night_sky.gd"
+}, {
+"base": "Label",
+"class": "NumberSelectorElement",
+"language": "GDScript",
+"path": "res://GameUI/MenuElements/number_selector_element.gd"
+}, {
+"base": "DudelingAIInputs",
+"class": "OffensiveAI",
+"language": "GDScript",
+"path": "res://GameComponents/DudelingRow/offensive_ai.gd"
+}, {
+"base": "OptionButton",
+"class": "OptionButtonElement",
+"language": "GDScript",
+"path": "res://GameUI/MenuElements/option_button_element.gd"
+}, {
+"base": "Panel",
+"class": "PerformancePanel",
+"language": "GDScript",
+"path": "res://GameUI/PerformancePanel/performance_panel.gd"
+}, {
+"base": "ArenaGoal",
+"class": "PinArenaGoal",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaGoals/pin_arena_goal.gd"
+}, {
+"base": "GameField",
+"class": "PinField",
+"language": "GDScript",
+"path": "res://GameComponents/GameFields/pin_field.gd"
+}, {
+"base": "CanvasLayer",
+"class": "PlayerHUD",
+"language": "GDScript",
+"path": "res://PlayerHUD/player_hud.gd"
+}, {
+"base": "SubMenu",
+"class": "PlayerSelectonSubMenu",
+"language": "GDScript",
+"path": "res://GameScenes/SelectionScreen/player_selection_sub_menu.gd"
+}, {
+"base": "PopupMenu",
+"class": "PopupMenuElement",
+"language": "GDScript",
+"path": "res://GameUI/MenuElements/popup_menu_element.gd"
+}, {
+"base": "Sprite",
+"class": "PunchText",
+"language": "GDScript",
+"path": "res://GameComponents/Dudelings/punch_text.gd"
+}, {
+"base": "ArenaPickup",
+"class": "RandomBallPickup",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaPickups/RandomBallPickup/random_ball_pickup.gd"
+}, {
+"base": "CanvasLayer",
+"class": "SceneSwitchingOverlay",
+"language": "GDScript",
+"path": "res://scripts/scene_switching_overlay.gd"
+}, {
+"base": "Node",
+"class": "ScoreDiff",
+"language": "GDScript",
+"path": "res://GameComponents/AnnouncerSystem/score_diff.gd"
+}, {
+"base": "TextureRect",
+"class": "Scoreboard",
+"language": "GDScript",
+"path": "res://PlayerHUD/Scoreboard/scoreboard.gd"
+}, {
+"base": "AnimatedSprite",
+"class": "Seagull",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaBackgrounds/scenes/Seagull/seagull.gd"
+}, {
+"base": "Node",
+"class": "SelectionScreen",
+"language": "GDScript",
+"path": "res://GameScenes/SelectionScreen/selection_screen.gd"
+}, {
+"base": "ButtonElement",
+"class": "SelectorArrowElement",
+"language": "GDScript",
+"path": "res://GameUI/MenuElements/selector_arrow_element.gd"
+}, {
+"base": "SubMenu",
+"class": "SettingsSubMenu",
+"language": "GDScript",
+"path": "res://GameUI/Menus/SubMenus/SettingsSubMenu/settings_sub_menu.gd"
+}, {
+"base": "AnimatedSprite",
+"class": "ShootingStar",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaBackgrounds/scenes/Sky/scenes/shooting_star.gd"
+}, {
+"base": "Slider",
+"class": "SliderElement",
+"language": "GDScript",
+"path": "res://GameUI/MenuElements/slider_element.gd"
+}, {
+"base": "ArenaPickup",
+"class": "SmallerBallPickup",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaPickups/SmallerBallPickup/smaller_ball_pickup.gd"
+}, {
+"base": "Node",
+"class": "SplashScreen",
+"language": "GDScript",
+"path": "res://GameScenes/SplashScreen/splash_screen.gd"
+}, {
+"base": "ArenaBackground",
+"class": "StadiumBackground",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaBackgrounds/Stadium/stadium_background.gd"
+}, {
+"base": "Node2D",
+"class": "StadiumStand",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaBackgrounds/scenes/StadiumStand/stadium_stand.gd"
+}, {
+"base": "TextureRect",
+"class": "StaminaContainer",
+"language": "GDScript",
+"path": "res://PlayerHUD/StaminaContainer/stamina_container.gd"
+}, {
+"base": "TextureRect",
+"class": "StaminaContainerLight",
+"language": "GDScript",
+"path": "res://PlayerHUD/StaminaContainer/stamina_container_light.gd"
+}, {
+"base": "SubMenu",
+"class": "StatsSubMenu",
+"language": "GDScript",
+"path": "res://GameUI/Menus/SubMenus/StatsSubMenu/stats_sub_menu.gd"
+}, {
+"base": "ArenaPickup",
+"class": "StunOpponentPickup",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaPickups/StunOpponentPickup/stun_opponent_pickup.gd"
+}, {
+"base": "BaseMenu",
+"class": "SubMenu",
+"language": "GDScript",
+"path": "res://GameUI/Menus/SubMenus/sub_menu.gd"
+}, {
+"base": "Panel",
+"class": "SubMenuBackgroundPanel",
+"language": "GDScript",
+"path": "res://GameUI/Menus/SubMenus/sub_menu_background_panel.gd"
+}, {
+"base": "ArenaPickup",
+"class": "SwitchConrolPickup",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaPickups/SwitchControlPickup/switch_control_pickup.gd"
+}, {
+"base": "TextureRect",
+"class": "TextureSelectorElement",
+"language": "GDScript",
+"path": "res://GameUI/MenuElements/texture_selector_element.gd"
+}, {
+"base": "ArenaPickup",
+"class": "TimedArenaPickup",
+"language": "GDScript",
+"path": "res://GameComponents/ArenaPickups/timed_arena_pickup.gd"
+}, {
+"base": "CanvasLayer",
+"class": "UILayer",
+"language": "GDScript",
+"path": "res://GameUI/ui_layer.gd"
+}, {
+"base": "CanvasLayer",
+"class": "VirtualGamepad",
+"language": "GDScript",
+"path": "res://GameUI/VirtualGamepad/virtual_gamepad.gd"
+}, {
+"base": "StaticBody2D",
+"class": "VolleyNet",
+"language": "GDScript",
+"path": "res://GameComponents/VolleyNet/volley_net.gd"
+}, {
+"base": "SubMenu",
+"class": "VolumeLevelsSubMenu",
+"language": "GDScript",
+"path": "res://GameUI/Menus/SubMenus/VolumeLevelsSubMenu/volume_levels_sub_menu.gd"
+}, {
+"base": "SubMenu",
+"class": "WhatsNewSubMenu",
+"language": "GDScript",
+"path": "res://GameUI/Menus/SubMenus/WhatsNewSubMenu/whats_new_sub_menu.gd"
+} ]
+_global_script_class_icons={
+"ActivePickupIndicator": "",
+"AdBoard": "",
+"AdBoardPlayer": "",
+"AggressiveAI": "",
+"AnnouncerSystem": "",
+"AreaPickupSpawningArea": "",
+"ArenaBackground": "",
+"ArenaGoal": "",
+"ArenaPickup": "",
+"BackgroundCrowd": "",
+"BalancedAI": "",
+"BaseMenu": "",
+"BeachBackground": "",
+"BiggerBallPickup": "",
+"BlackHolePickup": "",
+"ButtonContextBar": "",
+"ButtonElement": "",
+"CheckBoxElement": "",
+"CheckButtonElement": "",
+"CityBackground": "",
+"CityBuilding": "",
+"CityStadium": "",
+"ClassicArenaGoal": "",
+"ConfigDataParser": "",
+"ConfirmMessage": "",
+"ConfirmMessageLanding": "",
+"ContextOption": "",
+"CountdownLabel": "",
+"CreditsSubMenu": "",
+"CrowdControl": "",
+"CrtEffectLayer": "",
+"CustomFontLoader": "",
+"CycleTimer": "",
+"DaySky": "",
+"DefensiveAI": "",
+"DestinationBackground": "",
+"Dudeling": "",
+"DudelingAIInputs": "",
+"DudelingControllerInputs": "",
+"DudelingFist": "",
+"DudelingKeyboardInputs": "",
+"DudelingPlayerInputs": "",
+"DudelingRow": "",
+"DudelingSnapCloud": "",
+"EnumSelectorElement": "",
+"ExtraBallPickup": "",
+"Firework": "",
+"Fireworks": "",
+"FlyingBirds": "",
+"FullGameScene": "",
+"GameArena": "",
+"GameBall": "",
+"GameBallSpawningArea": "",
+"GameCamera": "",
+"GameField": "",
+"GameLocationSubMenu": "",
+"GameOptionsSubMenu": "",
+"GameOverMenu": "",
+"GamePausedMenu": "",
+"GameSettingsData": "",
+"GameTypeSubMenu": "",
+"GymBackground": "",
+"HideHighlightPickup": "",
+"HoopField": "",
+"HowToPlaySubMenu": "",
+"InfieldBackground": "",
+"MainMenu": "",
+"MenuButtonElement": "",
+"MenuELementPanel": "",
+"MiniDudeling": "",
+"MovingClouds": "",
+"MysteryPickup": "",
+"NightSky": "",
+"NumberSelectorElement": "",
+"OffensiveAI": "",
+"OptionButtonElement": "",
+"PerformancePanel": "",
+"PinArenaGoal": "",
+"PinField": "",
+"PlayerHUD": "",
+"PlayerSelectonSubMenu": "",
+"PopupMenuElement": "",
+"PunchText": "",
+"RandomBallPickup": "",
+"SceneSwitchingOverlay": "",
+"ScoreDiff": "",
+"Scoreboard": "",
+"Seagull": "",
+"SelectionScreen": "",
+"SelectorArrowElement": "",
+"SettingsSubMenu": "",
+"ShootingStar": "",
+"SliderElement": "",
+"SmallerBallPickup": "",
+"SplashScreen": "",
+"StadiumBackground": "",
+"StadiumStand": "",
+"StaminaContainer": "",
+"StaminaContainerLight": "",
+"StatsSubMenu": "",
+"StunOpponentPickup": "",
+"SubMenu": "",
+"SubMenuBackgroundPanel": "",
+"SwitchConrolPickup": "",
+"TextureSelectorElement": "",
+"TimedArenaPickup": "",
+"UILayer": "",
+"VirtualGamepad": "",
+"VolleyNet": "",
+"VolumeLevelsSubMenu": "",
+"WhatsNewSubMenu": ""
+}
+
+[application]
+
+config/name="Dudelings"
+run/main_scene="res://GameScenes/SplashScreen/SplashScreen.tscn"
+boot_splash/image="res://Assets/GameUI/art/startup_screen.png"
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
+config/icon="res://Assets/icon.png"
+config/windows_native_icon="res://Assets/icon.ico"
+
+[audio]
+
+default_bus_layout="res://audio_bus_layout.tres"
+
+[autoload]
+
+Globals="*res://singletons/globals.gd"
+SteamWrapper="*res://singletons/steam_wrapper.gd"
+GameplayController="*res://singletons/gameplay_controller.gd"
+DisplayController="*res://singletons/display_controller.gd"
+InputController="*res://singletons/input_controller.gd"
+SceneController="*res://singletons/scene_controller.gd"
+ArenaController="*res://singletons/arena_controller.gd"
+AudioController="*res://singletons/audio_controller.gd"
+PlayerStats="*res://singletons/player_stats.gd"
+Achievements="*res://singletons/achievements.gd"
+Commands="*res://singletons/commands.gd"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
+mouse_cursor/custom_image="res://Assets/GameUI/art/mouse_pointer.png"
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray(  )
+
+[global]
+
+icon=false
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+theme/use_hidpi=true
+theme/custom="res://main_ui_theme.tres"
+
+[importer_defaults]
+
+ogg_vorbis={
+"loop": false
+}
+texture={
+"flags/mipmaps": true
+}
+
+[input]
+
+ui_accept={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777222,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+ui_select={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":3,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+ui_cancel={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":1,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+ui_focus_next={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777218,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":5,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+ui_focus_prev={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":true,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777218,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":4,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+ui_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":14,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":0,"axis_value":-1.0,"script":null)
+ ]
+}
+ui_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":15,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":0,"axis_value":1.0,"script":null)
+ ]
+}
+ui_up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":12,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":1,"axis_value":-1.0,"script":null)
+ ]
+}
+ui_down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":13,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":1,"axis_value":1.0,"script":null)
+ ]
+}
+ui_sub_menu={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":10,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+ui_pause_menu={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":11,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+ui_left_click={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+ui_randomize={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":81,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":2,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+ui_reset={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":3,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+controller_one_move_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":14,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":-1.0,"script":null)
+ ]
+}
+controller_one_move_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":15,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":1.0,"script":null)
+ ]
+}
+controller_one_snap_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":6,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+controller_one_snap_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":7,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+controller_one_jump={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+controller_one_dash={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":1,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+controller_one_punch_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":4,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+controller_one_punch_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":5,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+controller_two_move_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":1,"button_index":14,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":1,"axis":0,"axis_value":-1.0,"script":null)
+ ]
+}
+controller_two_move_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":1,"button_index":15,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":1,"axis":0,"axis_value":1.0,"script":null)
+ ]
+}
+controller_two_snap_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":1,"button_index":6,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+controller_two_snap_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":1,"button_index":7,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+controller_two_jump={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":1,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+controller_two_dash={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":1,"button_index":1,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+controller_two_punch_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":1,"button_index":4,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+controller_two_punch_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":1,"button_index":5,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+keyboard_move_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+keyboard_move_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+keyboard_snap_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":81,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+keyboard_snap_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+keyboard_jump={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+keyboard_dash={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777237,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+keyboard_punch_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":74,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+keyboard_punch_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":76,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+keyboard_left_arrow={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+keyboard_right_arrow={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_command_prompt={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":96,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+2d_physics/layer_1="Arena"
+2d_physics/layer_2="Dudeling"
+2d_physics/layer_3="Game Ball"
+2d_physics/layer_4="Arena Goal"
+2d_physics/layer_5="Arena Pickup"
+2d_physics/layer_6="Background"
+2d_physics/layer_7="Seagull"
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"

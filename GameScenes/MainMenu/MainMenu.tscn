@@ -1,0 +1,270 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://GameScenes/MainMenu/main_menu.gd" type="Script" id=1]
+[ext_resource path="res://Assets/GameScenes/MainMenu/art/main_menu_background.png" type="Texture" id=2]
+[ext_resource path="res://Assets/GameUI/art/dudelings_logo.png" type="Texture" id=3]
+[ext_resource path="res://Assets/GameUI/fonts/custom/huge_font.res" type="BitmapFont" id=4]
+[ext_resource path="res://GameUI/ButtonContextBar/ButtonContextBar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://GameUI/MenuElements/ButtonElement.tscn" type="PackedScene" id=6]
+[ext_resource path="res://GameUI/fonts/main_font_16.tres" type="DynamicFont" id=7]
+[ext_resource path="res://GameScenes/MainMenu/Background.tscn" type="PackedScene" id=8]
+[ext_resource path="res://GameUI/MenuElements/resources/dudelings_ui_theme.tres" type="Theme" id=9]
+[ext_resource path="res://Assets/GameUI/fonts/custom/mini_big_font.res" type="BitmapFont" id=10]
+[ext_resource path="res://GameScenes/MainMenu/GameNotification.tscn" type="PackedScene" id=11]
+[ext_resource path="res://GameUI/UnseenNotification/UnseenNotification.tscn" type="PackedScene" id=12]
+[ext_resource path="res://GameScenes/MainMenu/discord_button.gd" type="Script" id=13]
+[ext_resource path="res://Assets/GameScenes/MainMenu/art/discord-button.png" type="Texture" id=14]
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="Theme" id=1]
+Button/colors/font_color = Color( 0.878431, 0.878431, 0.878431, 0 )
+Button/colors/font_color_disabled = Color( 0.901961, 0.901961, 0.901961, 0.2 )
+Button/colors/font_color_focus = Color( 0.941176, 0.941176, 0.941176, 0 )
+Button/colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 0 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 0 )
+Button/constants/hseparation = 2
+Button/fonts/font = null
+Button/styles/disabled = SubResource( 5 )
+Button/styles/focus = SubResource( 4 )
+Button/styles/hover = SubResource( 2 )
+Button/styles/normal = SubResource( 3 )
+
+[node name="MainMenu" type="Node"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 583.0 ]
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="AnimatedBackground" parent="CanvasLayer" instance=ExtResource( 8 )]
+
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="DudelingsLogo" type="TextureRect" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 64.0
+margin_top = -76.0
+margin_right = 444.0
+margin_bottom = 76.0
+texture = ExtResource( 3 )
+
+[node name="BuildVersionLabel" type="Label" parent="DudelingsLogo"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -56.0
+margin_top = 4.0
+margin_bottom = 24.0
+grow_horizontal = 0
+theme = ExtResource( 9 )
+text = "vnum"
+align = 2
+valign = 1
+
+[node name="ButtonElements" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -167.0
+margin_top = -183.0
+margin_right = -167.0
+margin_bottom = -183.0
+grow_horizontal = 2
+
+[node name="PlayButtonElement" parent="ButtonElements" instance=ExtResource( 6 )]
+margin_left = 106.0
+margin_top = -100.0
+margin_right = 693.0
+margin_bottom = 41.0
+rect_min_size = Vector2( 500, 120 )
+rect_scale = Vector2( 0.841744, 0.841744 )
+focus_neighbour_left = NodePath("../StatsButtonElement")
+focus_neighbour_top = NodePath("../ExitButtonElement")
+focus_neighbour_right = NodePath("../RevoltButton")
+focus_neighbour_bottom = NodePath("../HowToPlayButtonElement")
+focus_next = NodePath("../HowToPlayButtonElement")
+focus_previous = NodePath(".")
+theme = ExtResource( 9 )
+custom_fonts/font = ExtResource( 4 )
+text = "PLAY"
+align = 1
+
+[node name="HowToPlayButtonElement" parent="ButtonElements" instance=ExtResource( 6 )]
+margin_left = 85.0
+margin_top = 33.0
+margin_right = 661.0
+margin_bottom = 171.0
+rect_min_size = Vector2( 500, 120 )
+rect_scale = Vector2( 0.852212, 0.852212 )
+focus_neighbour_left = NodePath("../StatsButtonElement")
+focus_neighbour_top = NodePath("../PlayButtonElement")
+focus_neighbour_right = NodePath("../RevoltButton")
+focus_neighbour_bottom = NodePath("../SettingsButtonElement")
+focus_next = NodePath("../SettingsButtonElement")
+focus_previous = NodePath("../PlayButtonElement")
+theme = ExtResource( 9 )
+custom_fonts/font = ExtResource( 4 )
+text = "HOW TO PLAY"
+align = 1
+
+[node name="SettingsButtonElement" parent="ButtonElements" instance=ExtResource( 6 )]
+margin_left = 63.0
+margin_top = 166.0
+margin_right = 637.0
+margin_bottom = 304.0
+rect_min_size = Vector2( 500, 120 )
+rect_scale = Vector2( 0.856297, 0.856297 )
+focus_neighbour_left = NodePath("../StatsButtonElement")
+focus_neighbour_top = NodePath("../HowToPlayButtonElement")
+focus_neighbour_right = NodePath("../RevoltButton")
+focus_neighbour_bottom = NodePath("../ExitButtonElement")
+focus_next = NodePath("../ExitButtonElement")
+focus_previous = NodePath("../HowToPlayButtonElement")
+theme = ExtResource( 9 )
+custom_fonts/font = ExtResource( 4 )
+text = "SETTINGS"
+align = 1
+
+[node name="ExitButtonElement" parent="ButtonElements" instance=ExtResource( 6 )]
+margin_left = 42.0
+margin_top = 298.0
+margin_right = 612.0
+margin_bottom = 435.0
+rect_min_size = Vector2( 500, 120 )
+rect_scale = Vector2( 0.86328, 0.86328 )
+focus_neighbour_left = NodePath("../StatsButtonElement")
+focus_neighbour_top = NodePath("../SettingsButtonElement")
+focus_neighbour_right = NodePath("../RevoltButton")
+focus_neighbour_bottom = NodePath("../PlayButtonElement")
+focus_next = NodePath(".")
+focus_previous = NodePath("../SettingsButtonElement")
+theme = ExtResource( 9 )
+custom_fonts/font = ExtResource( 4 )
+text = "EXIT"
+align = 1
+
+[node name="StatsButtonElement" parent="ButtonElements" instance=ExtResource( 6 )]
+margin_left = -170.0
+margin_top = 319.0
+margin_right = -56.0
+margin_bottom = 419.0
+rect_min_size = Vector2( 100, 100 )
+rect_scale = Vector2( 0.86328, 0.86328 )
+focus_neighbour_left = NodePath("../WhatsNewButtonElement")
+focus_neighbour_top = NodePath("../SettingsButtonElement")
+focus_neighbour_right = NodePath("../ExitButtonElement")
+focus_neighbour_bottom = NodePath("../PlayButtonElement")
+focus_next = NodePath("../ExitButtonElement")
+focus_previous = NodePath("../SettingsButtonElement")
+theme = ExtResource( 9 )
+custom_fonts/font = ExtResource( 10 )
+text = "STATS"
+align = 1
+
+[node name="WhatsNewButtonElement" parent="ButtonElements" instance=ExtResource( 6 )]
+margin_left = -385.0
+margin_top = 319.0
+margin_right = -245.0
+margin_bottom = 419.0
+rect_min_size = Vector2( 100, 100 )
+rect_scale = Vector2( 0.86328, 0.86328 )
+focus_neighbour_left = NodePath("../RevoltButton")
+focus_neighbour_top = NodePath("../SettingsButtonElement")
+focus_neighbour_right = NodePath("../StatsButtonElement")
+focus_neighbour_bottom = NodePath("../PlayButtonElement")
+focus_next = NodePath("../StatsButtonElement")
+focus_previous = NodePath("../RevoltButton")
+theme = ExtResource( 9 )
+custom_fonts/font = ExtResource( 10 )
+text = "WHATS NEW"
+align = 1
+
+[node name="UnseenNotification" parent="ButtonElements/WhatsNewButtonElement" instance=ExtResource( 12 )]
+visible = false
+position = Vector2( 132.054, 33.5928 )
+scale = Vector2( 0.25, 0.25 )
+
+[node name="DiscordButton" type="Button" parent="ButtonElements"]
+visible = false
+margin_left = 617.0
+margin_top = 374.0
+margin_right = 668.0
+margin_bottom = 419.0
+focus_neighbour_left = NodePath("../ExitButtonElement")
+focus_neighbour_top = NodePath("../SettingsButtonElement")
+focus_neighbour_right = NodePath("../RevoltButton")
+focus_neighbour_bottom = NodePath("../PlayButtonElement")
+focus_next = NodePath("../RevoltButton")
+focus_previous = NodePath("../ExitButtonElement")
+theme = SubResource( 1 )
+script = ExtResource( 13 )
+href = "http://discord.heavyelement.com"
+
+[node name="Sprite" type="Sprite" parent="ButtonElements/DiscordButton"]
+position = Vector2( 25, 22 )
+texture = ExtResource( 14 )
+hframes = 4
+vframes = 2
+
+[node name="RevoltButton" type="Button" parent="ButtonElements"]
+margin_left = 655.0
+margin_top = 367.0
+margin_right = 701.0
+margin_bottom = 412.0
+focus_neighbour_left = NodePath("../DiscordButton")
+focus_neighbour_top = NodePath("../SettingsButtonElement")
+focus_neighbour_right = NodePath("../WhatsNewButtonElement")
+focus_neighbour_bottom = NodePath("../PlayButtonElement")
+focus_next = NodePath("../WhatsNewButtonElement")
+focus_previous = NodePath("../ExitButtonElement")
+theme = SubResource( 1 )
+script = ExtResource( 13 )
+href = "https://app.revolt.chat/invite/Vw8RmR4p"
+start_frame = 5
+hover_frame = 4
+
+[node name="Sprite" type="Sprite" parent="ButtonElements/RevoltButton"]
+position = Vector2( 22, 21 )
+texture = ExtResource( 14 )
+hframes = 4
+vframes = 2
+frame = 4
+
+[node name="CopyrightLabel" type="Label" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 121.0
+margin_top = -30.0
+margin_right = 343.0
+margin_bottom = -8.0
+grow_horizontal = 2
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 7 )
+text = "© 2025 HEAVY ELEMENT"
+
+[node name="ButtonContextBar" parent="." instance=ExtResource( 5 )]
+margin_left = -890.0
+
+[node name="GameNotification" parent="." instance=ExtResource( 11 )]

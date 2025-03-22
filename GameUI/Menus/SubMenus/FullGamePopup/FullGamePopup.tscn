@@ -1,0 +1,135 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://GameUI/fonts/main_font_bold_26.tres" type="DynamicFont" id=1]
+[ext_resource path="res://GameUI/Menus/SubMenus/resources/sub_menu_backdrop_stylebox.tres" type="StyleBox" id=2]
+[ext_resource path="res://GameUI/Menus/SubMenus/resources/sub_menu_background_panel_stylebox.tres" type="StyleBox" id=3]
+[ext_resource path="res://GameUI/MenuElements/resources/dudelings_ui_theme.tres" type="Theme" id=4]
+[ext_resource path="res://Assets/GameUI/fonts/custom/large_font.res" type="BitmapFont" id=5]
+[ext_resource path="res://GameUI/MenuElements/ButtonElement.tscn" type="PackedScene" id=6]
+[ext_resource path="res://GameUI/Menus/SubMenus/sub_menu_background_panel.gd" type="Script" id=7]
+[ext_resource path="res://GameUI/Menus/SubMenus/FullGamePopup/full_game_scene.gd" type="Script" id=8]
+[ext_resource path="res://Assets/GameUI/Menus/SubMenus/FullGamePopup/keyary-red-guy.png" type="Texture" id=9]
+[ext_resource path="res://Assets/GameUI/Menus/SubMenus/FullGamePopup/keyary-blue-guy.png" type="Texture" id=10]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0.0470588, 0.301961, 1 )
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="FullGameScreen" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 800, 600 )
+custom_styles/panel = ExtResource( 2 )
+script = ExtResource( 8 )
+
+[node name="BackgroundPanel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -350.0
+margin_top = -310.0
+margin_right = 350.0
+margin_bottom = 276.0
+grow_horizontal = 2
+rect_min_size = Vector2( 700, 586 )
+custom_styles/panel = ExtResource( 3 )
+script = ExtResource( 7 )
+
+[node name="HeaderLabel" type="Label" parent="."]
+margin_left = 290.0
+margin_top = 57.0
+margin_right = 990.0
+margin_bottom = 97.0
+grow_horizontal = 2
+theme = ExtResource( 4 )
+custom_fonts/font = ExtResource( 5 )
+text = "IT'S ALMOST TIME TO SPORTSBALL!"
+align = 1
+
+[node name="Label" type="Label" parent="."]
+margin_left = 293.0
+margin_top = 112.0
+margin_right = 993.0
+margin_bottom = 424.0
+rect_pivot_offset = Vector2( 484, 379 )
+custom_fonts/font = ExtResource( 1 )
+text = "That option isn't available in the demo, but the full version of Dudelings: Arcade Sportsball is available now!
+
+The retail version includes new game modes, 
+more arenas, unlockable content, and 
+customization options. 
+
+Change your Dudeling's
+jerseys, choose announcer 
+packs, modify the rules, and 
+more in the full version!"
+autowrap = true
+
+[node name="Keyary-red-guy" type="Sprite" parent="."]
+position = Vector2( 715, 429 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 9 )
+
+[node name="Keyary-blue-guy" type="Sprite" parent="."]
+position = Vector2( 874, 420 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 10 )
+
+[node name="ColorPanel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -364.0
+margin_top = -190.0
+margin_right = 364.0
+margin_bottom = -70.0
+grow_horizontal = 2
+rect_min_size = Vector2( 628, 120 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="ElementContainer" type="HBoxContainer" parent="."]
+margin_left = 290.0
+margin_top = 537.0
+margin_right = 990.0
+margin_bottom = 637.0
+grow_horizontal = 2
+rect_min_size = Vector2( 0, 100 )
+custom_constants/separation = 80
+alignment = 1
+
+[node name="CancelButtonElement" parent="ElementContainer" instance=ExtResource( 6 )]
+margin_left = 130.0
+margin_top = 10.0
+margin_right = 310.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 180, 80 )
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_right = NodePath("../BuyNowButtonElement")
+focus_neighbour_bottom = NodePath(".")
+focus_next = NodePath("../BuyNowButtonElement")
+focus_previous = NodePath(".")
+theme = ExtResource( 4 )
+text = "CANCEL"
+align = 1
+
+[node name="BuyNowButtonElement" parent="ElementContainer" instance=ExtResource( 6 )]
+margin_left = 390.0
+margin_top = 10.0
+margin_right = 570.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 180, 80 )
+focus_neighbour_left = NodePath("../CancelButtonElement")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath("../CancelButtonElement")
+theme = ExtResource( 4 )
+text = "BUY NOW"
+align = 1

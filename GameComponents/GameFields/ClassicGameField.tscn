@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://GameComponents/DudelingRow/DudelingRow.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GameComponents/GameFields/game_field.gd" type="Script" id=4]
+[ext_resource path="res://GameComponents/GameBalls/SpawningArea/GameBallSpawningArea.tscn" type="PackedScene" id=5]
+[ext_resource path="res://GameComponents/ArenaPickups/SpawningArea/ArenaPickupSpawningArea.tscn" type="PackedScene" id=6]
+[ext_resource path="res://GameComponents/ArenaGoals/ClassicArenaGoal.tscn" type="PackedScene" id=7]
+
+[node name="ClassicGameField" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -77.0
+margin_top = -73.0
+margin_right = 1363.0
+margin_bottom = 901.0
+color = Color( 0, 0, 0, 0.176471 )
+
+[node name="ArenaPickupSpawningArea" parent="." instance=ExtResource( 6 )]
+
+[node name="SpawningArea0" parent="ArenaPickupSpawningArea" index="1"]
+margin_left = 240.0
+margin_top = 234.0
+margin_right = 640.0
+margin_bottom = 434.0
+rect_min_size = Vector2( 400, 200 )
+
+[node name="SpawningArea1" parent="ArenaPickupSpawningArea" index="2"]
+margin_left = 640.0
+margin_top = 234.0
+margin_right = 1040.0
+margin_bottom = 434.0
+rect_min_size = Vector2( 400, 200 )
+
+[node name="GameBallSpawningArea" parent="." instance=ExtResource( 5 )]
+
+[node name="PlayerOneSpawnArea" parent="GameBallSpawningArea" index="0"]
+margin_left = 390.0
+margin_top = 130.0
+margin_right = 640.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 250, 50 )
+
+[node name="PlayerTwoSpawnArea" parent="GameBallSpawningArea" index="1"]
+margin_left = 640.0
+margin_top = 130.0
+margin_right = 890.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 250, 50 )
+
+[node name="PlayerOneClassicArenaGoal" parent="." instance=ExtResource( 7 )]
+position = Vector2( 40, 300 )
+_is_pin = false
+
+[node name="PlayerTwoClassicArenaGoal" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1240, 300 )
+scale = Vector2( -1, 1 )
+defending_player = 2
+_is_pin = false
+
+[node name="DudelingRow" parent="." instance=ExtResource( 2 )]
+position = Vector2( 640, 730 )
+
+[editable path="ArenaPickupSpawningArea"]
+[editable path="GameBallSpawningArea"]

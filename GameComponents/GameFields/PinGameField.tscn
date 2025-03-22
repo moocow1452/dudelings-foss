@@ -1,0 +1,102 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://GameComponents/GameFields/pin_field.gd" type="Script" id=1]
+[ext_resource path="res://GameComponents/DudelingRow/DudelingRow.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GameComponents/ArenaGoals/PinArenaGoal.tscn" type="PackedScene" id=3]
+[ext_resource path="res://GameComponents/GameBalls/SpawningArea/GameBallSpawningArea.tscn" type="PackedScene" id=5]
+[ext_resource path="res://GameComponents/ArenaPickups/SpawningArea/ArenaPickupSpawningArea.tscn" type="PackedScene" id=6]
+
+[node name="PinGameField" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 80.0, 146.0, 254.0, 330.0, 406.0, 477.0 ]
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -76.0
+margin_top = -76.0
+margin_right = 1364.0
+margin_bottom = 898.0
+color = Color( 0, 0, 0, 0.176471 )
+
+[node name="ArenaPickupSpawningArea" parent="." instance=ExtResource( 6 )]
+
+[node name="SpawningArea0" parent="ArenaPickupSpawningArea" index="1"]
+margin_left = 240.0
+margin_top = 234.0
+margin_right = 640.0
+margin_bottom = 434.0
+rect_min_size = Vector2( 400, 200 )
+
+[node name="SpawningArea1" parent="ArenaPickupSpawningArea" index="2"]
+margin_left = 640.0
+margin_top = 234.0
+margin_right = 1040.0
+margin_bottom = 434.0
+rect_min_size = Vector2( 400, 200 )
+
+[node name="GameBallSpawningArea" parent="." instance=ExtResource( 5 )]
+
+[node name="PlayerOneSpawnArea" parent="GameBallSpawningArea" index="0"]
+margin_left = 390.0
+margin_top = 130.0
+margin_right = 640.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 250, 50 )
+
+[node name="PlayerTwoSpawnArea" parent="GameBallSpawningArea" index="1"]
+margin_left = 640.0
+margin_top = 130.0
+margin_right = 890.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 250, 50 )
+
+[node name="DudelingRow" parent="." instance=ExtResource( 2 )]
+position = Vector2( 640, 730 )
+
+[node name="PinGoals" type="Node2D" parent="."]
+
+[node name="PinGoal1" parent="PinGoals" instance=ExtResource( 3 )]
+position = Vector2( 444, 204 )
+
+[node name="PinGoal2" parent="PinGoals" instance=ExtResource( 3 )]
+position = Vector2( 284, 116 )
+
+[node name="PinGoal3" parent="PinGoals" instance=ExtResource( 3 )]
+position = Vector2( 279, 300 )
+
+[node name="PinGoal4" parent="PinGoals" instance=ExtResource( 3 )]
+position = Vector2( 88, 225 )
+
+[node name="PinGoal5" parent="PinGoals" instance=ExtResource( 3 )]
+position = Vector2( 133, 447 )
+
+[node name="PinGoal6" parent="PinGoals" instance=ExtResource( 3 )]
+position = Vector2( 529, 382 )
+
+[node name="PinGoal7" parent="PinGoals" instance=ExtResource( 3 )]
+position = Vector2( 816, 204 )
+defending_player = 2
+
+[node name="PinGoal8" parent="PinGoals" instance=ExtResource( 3 )]
+position = Vector2( 1002, 300 )
+defending_player = 2
+
+[node name="PinGoal9" parent="PinGoals" instance=ExtResource( 3 )]
+position = Vector2( 1104, 447 )
+defending_player = 2
+
+[node name="PinGoal10" parent="PinGoals" instance=ExtResource( 3 )]
+position = Vector2( 742, 382 )
+defending_player = 2
+
+[node name="PinGoal11" parent="PinGoals" instance=ExtResource( 3 )]
+position = Vector2( 1185, 225 )
+defending_player = 2
+
+[node name="PinGoal12" parent="PinGoals" instance=ExtResource( 3 )]
+position = Vector2( 978, 116 )
+defending_player = 2
+
+[editable path="ArenaPickupSpawningArea"]
+[editable path="GameBallSpawningArea"]

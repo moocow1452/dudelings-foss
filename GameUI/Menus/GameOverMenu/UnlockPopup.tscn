@@ -1,0 +1,135 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Assets/GameUI/fonts/custom/mini_big_font.res" type="BitmapFont" id=1]
+[ext_resource path="res://Assets/GameUI/fonts/custom/large_font.res" type="BitmapFont" id=2]
+[ext_resource path="res://Assets/GameMusic/dudelings-unlock.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Assets/GameUI/Menus/GameOverMenu/art/destination.png" type="Texture" id=4]
+[ext_resource path="res://GameUI/Menus/GameOverMenu/unlock_popup.gd" type="Script" id=5]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Control:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Unlocked"
+length = 2.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 0.554785, 1 ),
+"update": 0,
+"values": [ Vector2( 450, 800 ), Vector2( 454, 590 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Control:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Control:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 0.784584, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "audio"
+tracks/3/path = NodePath("Control/UnlockSound")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 3 )
+} ],
+"times": PoolRealArray( 0.4 )
+}
+
+[node name="UnlockPopup" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Control" type="Control" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 0.288
+anchor_bottom = 0.133
+margin_left = 454.0
+margin_top = 590.0
+margin_right = 454.36
+margin_bottom = 590.24
+
+[node name="UnlockSound" type="AudioStreamPlayer" parent="Control"]
+stream = ExtResource( 3 )
+bus = "Sound"
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+margin_right = 369.0
+margin_bottom = 96.0
+
+[node name="UnlockedPortrait" type="Sprite" parent="Control"]
+position = Vector2( 55, 48 )
+scale = Vector2( 0.573333, 0.573333 )
+texture = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="Control"]
+margin_left = 132.0
+margin_top = 9.0
+margin_right = 336.0
+margin_bottom = 34.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "NEW ARENA UNLOCKED!"
+
+[node name="Destination" type="Label" parent="Control"]
+margin_left = 122.0
+margin_top = 43.0
+margin_right = 348.0
+margin_bottom = 83.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "DESTINATION"
+
+[node name="AnimationLayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/Unlocked = SubResource( 2 )

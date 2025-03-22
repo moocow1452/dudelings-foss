@@ -1,0 +1,334 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://GameScenes/SelectionScreen/player_selection_sub_menu.gd" type="Script" id=1]
+[ext_resource path="res://Assets/GameScenes/SelectionScreen/art/player_icons.png" type="Texture" id=2]
+[ext_resource path="res://GameUI/MenuElements/ButtonElement.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/GameUI/fonts/custom/huge_font.res" type="BitmapFont" id=4]
+[ext_resource path="res://GameUI/MenuElements/resources/dudelings_ui_theme.tres" type="Theme" id=5]
+[ext_resource path="res://GameUI/MenuElements/SelectorArrowElement.tscn" type="PackedScene" id=6]
+[ext_resource path="res://GameUI/MenuElements/EnumSelectorElement.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/GameUI/art/controller_buttons.png" type="Texture" id=9]
+[ext_resource path="res://Assets/GameUI/art/controller_icons.png" type="Texture" id=10]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 1
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 352, 234 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 1
+atlas = ExtResource( 9 )
+region = Rect2( 200, 50, 50, 50 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 1
+atlas = ExtResource( 9 )
+region = Rect2( 200, 0, 50, 50 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 1
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 150, 150 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 1
+atlas = ExtResource( 2 )
+region = Rect2( 352, 0, 352, 234 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 1
+atlas = ExtResource( 9 )
+region = Rect2( 250, 50, 50, 50 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 1
+atlas = ExtResource( 9 )
+region = Rect2( 250, 0, 50, 50 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 1
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 150, 150 )
+
+[node name="PlayerSelectionSubMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 5 )
+script = ExtResource( 1 )
+
+[node name="HeaderLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -210.0
+margin_top = 24.0
+margin_right = 210.0
+margin_bottom = 84.0
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 4 )
+text = "PLAYER SETUP"
+align = 1
+
+[node name="Players" type="HBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -452.0
+margin_top = -165.0
+margin_right = 452.0
+margin_bottom = 69.0
+grow_horizontal = 2
+custom_constants/separation = 200
+
+[node name="HomeTeam" type="TextureRect" parent="Players"]
+margin_right = 352.0
+margin_bottom = 234.0
+texture = SubResource( 1 )
+
+[node name="ControllerOptions" type="Control" parent="Players/HomeTeam"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="Label" type="Label" parent="Players/HomeTeam/ControllerOptions"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -42.0
+margin_right = 32.0
+margin_bottom = -22.0
+grow_horizontal = 2
+text = "PRESS"
+align = 1
+
+[node name="ControllerIcons" type="HBoxContainer" parent="Players/HomeTeam/ControllerOptions"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -65.0
+margin_top = 7.0
+margin_right = 65.0
+margin_bottom = 57.0
+grow_horizontal = 2
+custom_constants/separation = 30
+alignment = 1
+
+[node name="XBox" type="TextureRect" parent="Players/HomeTeam/ControllerOptions/ControllerIcons"]
+margin_right = 50.0
+margin_bottom = 50.0
+texture = SubResource( 3 )
+
+[node name="Keyboard" type="TextureRect" parent="Players/HomeTeam/ControllerOptions/ControllerIcons"]
+margin_left = 80.0
+margin_right = 130.0
+margin_bottom = 50.0
+texture = SubResource( 5 )
+
+[node name="ControllerChoice" type="TextureRect" parent="Players/HomeTeam"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -75.0
+margin_top = -51.0
+margin_right = 75.0
+margin_bottom = 99.0
+texture = SubResource( 10 )
+
+[node name="AIEnumSelectorElement" parent="Players/HomeTeam" instance=ExtResource( 7 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -22.0
+margin_top = 22.0
+margin_right = 22.0
+margin_bottom = 42.0
+_left_arrow = NodePath("LeftSelectorArrowElement")
+_right_arrow = NodePath("RightSelectorArrowElement")
+
+[node name="Label" type="Label" parent="Players/HomeTeam/AIEnumSelectorElement"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -14.5
+margin_top = -74.0
+margin_right = 14.5
+margin_bottom = -54.0
+grow_horizontal = 2
+text = "A.I."
+align = 1
+
+[node name="LeftSelectorArrowElement" parent="Players/HomeTeam/AIEnumSelectorElement" instance=ExtResource( 6 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -136.0
+margin_top = -17.5
+margin_right = -105.0
+margin_bottom = 17.5
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_right = NodePath("../RightSelectorArrowElement")
+focus_neighbour_bottom = NodePath("../../../../ContinueButtonElement")
+focus_next = NodePath("../RightSelectorArrowElement")
+focus_previous = NodePath(".")
+flip_h = true
+flip_v = true
+
+[node name="RightSelectorArrowElement" parent="Players/HomeTeam/AIEnumSelectorElement" instance=ExtResource( 6 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 105.0
+margin_top = -17.5
+margin_right = 136.0
+margin_bottom = 17.5
+focus_neighbour_left = NodePath("../LeftSelectorArrowElement")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_right = NodePath("../../../AwayTeam/AIEnumSelectorElement/LeftSelectorArrowElement")
+focus_neighbour_bottom = NodePath("../../../../ContinueButtonElement")
+focus_next = NodePath("../../../AwayTeam/AIEnumSelectorElement/LeftSelectorArrowElement")
+focus_previous = NodePath("../LeftSelectorArrowElement")
+
+[node name="AwayTeam" type="TextureRect" parent="Players"]
+margin_left = 552.0
+margin_right = 904.0
+margin_bottom = 234.0
+texture = SubResource( 2 )
+
+[node name="ControllerOptions" type="Control" parent="Players/AwayTeam"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="Label" type="Label" parent="Players/AwayTeam/ControllerOptions"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -42.0
+margin_right = 32.0
+margin_bottom = -22.0
+grow_horizontal = 2
+text = "PRESS"
+align = 1
+
+[node name="ControllerIcons" type="HBoxContainer" parent="Players/AwayTeam/ControllerOptions"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -65.0
+margin_top = 7.0
+margin_right = 65.0
+margin_bottom = 57.0
+grow_horizontal = 2
+custom_constants/separation = 30
+alignment = 1
+
+[node name="XBox" type="TextureRect" parent="Players/AwayTeam/ControllerOptions/ControllerIcons"]
+margin_right = 50.0
+margin_bottom = 50.0
+texture = SubResource( 7 )
+
+[node name="Keyboard" type="TextureRect" parent="Players/AwayTeam/ControllerOptions/ControllerIcons"]
+margin_left = 80.0
+margin_right = 130.0
+margin_bottom = 50.0
+texture = SubResource( 9 )
+
+[node name="ControllerChoice" type="TextureRect" parent="Players/AwayTeam"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -75.0
+margin_top = -51.0
+margin_right = 75.0
+margin_bottom = 99.0
+texture = SubResource( 11 )
+
+[node name="AIEnumSelectorElement" parent="Players/AwayTeam" instance=ExtResource( 7 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -22.0
+margin_top = 22.0
+margin_right = 22.0
+margin_bottom = 42.0
+_left_arrow = NodePath("LeftSelectorArrowElement")
+_right_arrow = NodePath("RightSelectorArrowElement")
+
+[node name="Label" type="Label" parent="Players/AwayTeam/AIEnumSelectorElement"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -14.5
+margin_top = -74.0
+margin_right = 14.5
+margin_bottom = -54.0
+grow_horizontal = 2
+text = "A.I."
+align = 1
+
+[node name="LeftSelectorArrowElement" parent="Players/AwayTeam/AIEnumSelectorElement" instance=ExtResource( 6 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -136.0
+margin_top = -17.5
+margin_right = -105.0
+margin_bottom = 17.5
+focus_neighbour_left = NodePath("../../../HomeTeam/AIEnumSelectorElement/RightSelectorArrowElement")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_right = NodePath("../RightSelectorArrowElement")
+focus_neighbour_bottom = NodePath("../../../../ContinueButtonElement")
+focus_next = NodePath("../RightSelectorArrowElement")
+focus_previous = NodePath("../../../HomeTeam/AIEnumSelectorElement/RightSelectorArrowElement")
+flip_h = true
+flip_v = true
+
+[node name="RightSelectorArrowElement" parent="Players/AwayTeam/AIEnumSelectorElement" instance=ExtResource( 6 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 105.0
+margin_top = -17.5
+margin_right = 136.0
+margin_bottom = 17.5
+focus_neighbour_left = NodePath("../LeftSelectorArrowElement")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath("../../../../ContinueButtonElement")
+focus_next = NodePath("../../../../ContinueButtonElement")
+focus_previous = NodePath("../LeftSelectorArrowElement")
+
+[node name="ContinueButtonElement" parent="." instance=ExtResource( 3 )]
+margin_left = 440.0
+margin_top = 548.0
+margin_right = 839.0
+margin_bottom = 648.0
+rect_min_size = Vector2( 399, 100 )
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../Players/HomeTeam/AIEnumSelectorElement/RightSelectorArrowElement")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath("../Players/AwayTeam/AIEnumSelectorElement/RightSelectorArrowElement")
+custom_fonts/font = ExtResource( 4 )
+text = "CONTINUE"
+align = 1

@@ -1,0 +1,330 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://GameUI/fonts/main_font_bold_italic_24.tres" type="DynamicFont" id=1]
+[ext_resource path="res://GameUI/Menus/SubMenus/StatsSubMenu/stats_sub_menu.gd" type="Script" id=2]
+[ext_resource path="res://GameUI/MenuElements/resources/dudelings_ui_theme.tres" type="Theme" id=3]
+[ext_resource path="res://GameUI/Menus/SubMenus/resources/sub_menu_background_panel_stylebox.tres" type="StyleBox" id=6]
+[ext_resource path="res://GameUI/Menus/SubMenus/resources/sub_menu_backdrop_stylebox.tres" type="StyleBox" id=7]
+[ext_resource path="res://GameUI/Menus/SubMenus/sub_menu_background_panel.gd" type="Script" id=8]
+[ext_resource path="res://Assets/GameUI/fonts/custom/large_font.res" type="BitmapFont" id=9]
+[ext_resource path="res://GameUI/MenuElements/MenuElementPanel.tscn" type="PackedScene" id=10]
+[ext_resource path="res://GameUI/fonts/main_font_bold_26.tres" type="DynamicFont" id=12]
+
+[node name="StatsSubMenu" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 800, 600 )
+custom_styles/panel = ExtResource( 7 )
+script = ExtResource( 2 )
+
+[node name="BackgroundPanel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -350.0
+margin_top = -307.0
+margin_right = 350.0
+margin_bottom = 275.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 700, 586 )
+custom_styles/panel = ExtResource( 6 )
+script = ExtResource( 8 )
+
+[node name="MenuContainer" type="VBoxContainer" parent="BackgroundPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_constants/separation = 10
+alignment = 1
+
+[node name="HeaderLabel" type="Label" parent="BackgroundPanel/MenuContainer"]
+margin_right = 700.0
+margin_bottom = 40.0
+grow_horizontal = 2
+theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 9 )
+text = "STATS"
+align = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BackgroundPanel/MenuContainer"]
+margin_top = 50.0
+margin_right = 700.0
+margin_bottom = 586.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="ElementContainer" type="VBoxContainer" parent="BackgroundPanel/MenuContainer/ScrollContainer"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 696.0
+margin_bottom = 532.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+custom_constants/separation = 0
+
+[node name="total_score" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer" instance=ExtResource( 10 )]
+margin_right = 692.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../pickups_cancelled")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath("../games_played")
+focus_next = NodePath("../games_played")
+focus_previous = NodePath("../pickups_cancelled")
+script = null
+
+[node name="Label" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/total_score"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 21.0
+margin_top = -16.0
+margin_right = 153.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 12 )
+text = "Career Score"
+
+[node name="Value" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/total_score"]
+margin_left = 493.0
+margin_top = 17.0
+margin_right = 652.0
+margin_bottom = 55.0
+custom_colors/font_color = Color( 0.172549, 0.509804, 0.47451, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "0"
+align = 2
+valign = 1
+
+[node name="HSeparator0" type="HSeparator" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer"]
+show_behind_parent = true
+margin_top = 72.0
+margin_right = 692.0
+margin_bottom = 76.0
+
+[node name="games_played" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer" instance=ExtResource( 10 )]
+margin_top = 76.0
+margin_right = 692.0
+margin_bottom = 148.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../total_score")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath("../favorite_game_mode")
+focus_next = NodePath("../favorite_game_mode")
+focus_previous = NodePath("../total_score")
+script = null
+
+[node name="Label" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/games_played"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 21.0
+margin_top = -16.0
+margin_right = 153.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 12 )
+text = "Wins/Losses"
+
+[node name="Value" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/games_played"]
+margin_left = 493.0
+margin_top = 17.0
+margin_right = 652.0
+margin_bottom = 55.0
+custom_colors/font_color = Color( 0.172549, 0.509804, 0.47451, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "0"
+align = 2
+valign = 1
+
+[node name="HSeparator1" type="HSeparator" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer"]
+show_behind_parent = true
+margin_top = 148.0
+margin_right = 692.0
+margin_bottom = 152.0
+
+[node name="favorite_game_mode" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer" instance=ExtResource( 10 )]
+margin_top = 152.0
+margin_right = 692.0
+margin_bottom = 224.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../games_played")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath("../give_punch")
+focus_next = NodePath("../give_punch")
+focus_previous = NodePath("../games_played")
+script = null
+
+[node name="Label" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/favorite_game_mode"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 21.0
+margin_top = -16.0
+margin_right = 153.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 12 )
+text = "Favorite Game Mode"
+
+[node name="Value" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/favorite_game_mode"]
+margin_left = 493.0
+margin_top = 17.0
+margin_right = 652.0
+margin_bottom = 55.0
+custom_colors/font_color = Color( 0.172549, 0.509804, 0.47451, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "0"
+align = 2
+valign = 1
+
+[node name="HSeparator6" type="HSeparator" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer"]
+show_behind_parent = true
+margin_top = 224.0
+margin_right = 692.0
+margin_bottom = 228.0
+
+[node name="give_punch" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer" instance=ExtResource( 10 )]
+margin_top = 228.0
+margin_right = 692.0
+margin_bottom = 300.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../favorite_game_mode")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath("../knocked_out")
+focus_next = NodePath("../knocked_out")
+focus_previous = NodePath("../favorite_game_mode")
+script = null
+
+[node name="Label" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/give_punch"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 21.0
+margin_top = -16.0
+margin_right = 153.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 12 )
+text = "Punches Dealt"
+
+[node name="Value" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/give_punch"]
+margin_left = 493.0
+margin_top = 17.0
+margin_right = 652.0
+margin_bottom = 55.0
+custom_colors/font_color = Color( 0.172549, 0.509804, 0.47451, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "0"
+align = 2
+valign = 1
+
+[node name="HSeparator2" type="HSeparator" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer"]
+show_behind_parent = true
+margin_top = 300.0
+margin_right = 692.0
+margin_bottom = 304.0
+
+[node name="knocked_out" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer" instance=ExtResource( 10 )]
+margin_top = 304.0
+margin_right = 692.0
+margin_bottom = 376.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../give_punch")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath("../pickups_activated")
+focus_next = NodePath("../pickups_activated")
+focus_previous = NodePath("../give_punch")
+script = null
+
+[node name="Label" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/knocked_out"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 21.0
+margin_top = -16.0
+margin_right = 153.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 12 )
+text = "Punches Recieved"
+
+[node name="Value" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/knocked_out"]
+margin_left = 493.0
+margin_top = 17.0
+margin_right = 652.0
+margin_bottom = 55.0
+custom_colors/font_color = Color( 0.172549, 0.509804, 0.47451, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "0"
+align = 2
+valign = 1
+
+[node name="HSeparator3" type="HSeparator" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer"]
+show_behind_parent = true
+margin_top = 376.0
+margin_right = 692.0
+margin_bottom = 380.0
+
+[node name="pickups_activated" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer" instance=ExtResource( 10 )]
+margin_top = 380.0
+margin_right = 692.0
+margin_bottom = 452.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../knocked_out")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath("../pickups_cancelled")
+focus_next = NodePath("../total_score")
+focus_previous = NodePath(".")
+script = null
+
+[node name="Label" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/pickups_activated"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 21.0
+margin_top = -16.0
+margin_right = 153.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 12 )
+text = "Pickups Activated"
+
+[node name="Value" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/pickups_activated"]
+margin_left = 493.0
+margin_top = 17.0
+margin_right = 652.0
+margin_bottom = 55.0
+custom_colors/font_color = Color( 0.172549, 0.509804, 0.47451, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "0"
+align = 2
+valign = 1
+
+[node name="HSeparator4" type="HSeparator" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer"]
+show_behind_parent = true
+margin_top = 452.0
+margin_right = 692.0
+margin_bottom = 456.0
+
+[node name="pickups_cancelled" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer" instance=ExtResource( 10 )]
+margin_top = 456.0
+margin_right = 692.0
+margin_bottom = 528.0
+script = null
+
+[node name="Label" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/pickups_cancelled"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 21.0
+margin_top = -16.0
+margin_right = 153.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 12 )
+text = "Pickups Removed"
+
+[node name="Value" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/pickups_cancelled"]
+margin_left = 493.0
+margin_top = 17.0
+margin_right = 652.0
+margin_bottom = 55.0
+custom_colors/font_color = Color( 0.172549, 0.509804, 0.47451, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "0"
+align = 2
+valign = 1

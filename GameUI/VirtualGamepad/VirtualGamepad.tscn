@@ -1,0 +1,230 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Assets/GameUI/fonts/custom/normal_font.res" type="BitmapFont" id=1]
+[ext_resource path="res://Assets/GameUI/fonts/custom/huge_font.res" type="BitmapFont" id=2]
+[ext_resource path="res://GameUI/VirtualGamepad/virtual_gamepad_button.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 1, 1, 0.101961 )
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 0.156863 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 1, 1, 0.180392 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0, 0, 0.392157 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="VirtualGamepad" type="Node2D"]
+__meta__ = {
+"_edit_horizontal_guides_": [ 13.0, 266.0, 132.0 ],
+"_edit_lock_": true,
+"_edit_vertical_guides_": [ 29.0, 461.0, 1257.0, 848.0, 1047.0, 257.0, 239.0, 1061.0 ]
+}
+
+[node name="ButtonPause" type="Button" parent="."]
+margin_left = 472.0
+margin_top = 13.0
+margin_right = 543.0
+margin_bottom = 82.0
+rect_pivot_offset = Vector2( 993, 193 )
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color_focus = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color_hover = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.913725, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 1 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = SubResource( 2 )
+enabled_focus_mode = 0
+text = "II"
+script = ExtResource( 3 )
+input_type = "ui_pause_menu"
+
+[node name="ButtonDash" type="Button" parent="."]
+margin_left = 849.0
+margin_top = 147.0
+margin_right = 1046.0
+margin_bottom = 265.0
+rect_pivot_offset = Vector2( 993, 193 )
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color_focus = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color_hover = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.913725, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 1 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = SubResource( 2 )
+enabled_focus_mode = 0
+text = "DASH"
+script = ExtResource( 3 )
+input_type = "controller_one_dash"
+
+[node name="ButtonMoveLeft" type="Button" parent="."]
+margin_left = 29.0
+margin_top = 148.0
+margin_right = 238.0
+margin_bottom = 266.0
+rect_pivot_offset = Vector2( 993, 58 )
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color_focus = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color_hover = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.913725, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 1 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = SubResource( 2 )
+enabled_focus_mode = 0
+text = "<"
+script = ExtResource( 3 )
+input_type = "controller_one_move_left"
+
+[node name="ButtonPunchLeft" type="Button" parent="."]
+margin_left = 848.0
+margin_top = 14.0
+margin_right = 1046.0
+margin_bottom = 132.0
+rect_pivot_offset = Vector2( 851, 58 )
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color_focus = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color_hover = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.913725, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 1 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = SubResource( 2 )
+enabled_focus_mode = 0
+text = "< PUNCH"
+script = ExtResource( 3 )
+input_type = "controller_one_punch_left"
+
+[node name="ButtonGoalieLeft" type="Button" parent="."]
+margin_left = 29.0
+margin_top = 13.0
+margin_right = 238.0
+margin_bottom = 131.0
+rect_pivot_offset = Vector2( 1079, 58 )
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color_focus = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color_hover = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.913725, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 1 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = SubResource( 2 )
+enabled_focus_mode = 0
+text = "< GOALIE"
+script = ExtResource( 3 )
+input_type = "controller_one_snap_left"
+
+[node name="ButtonJump" type="Button" parent="."]
+margin_left = 1061.0
+margin_top = 148.0
+margin_right = 1256.0
+margin_bottom = 266.0
+rect_pivot_offset = Vector2( 993, 193 )
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color_focus = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color_hover = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.913725, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 1 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = SubResource( 2 )
+enabled_focus_mode = 0
+text = "JUMP"
+script = ExtResource( 3 )
+input_type = "controller_one_jump"
+
+[node name="ButtonMoveRight" type="Button" parent="."]
+margin_left = 258.0
+margin_top = 148.0
+margin_right = 462.0
+margin_bottom = 266.0
+rect_pivot_offset = Vector2( 993, 58 )
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color_focus = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color_hover = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.913725, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 1 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = SubResource( 2 )
+enabled_focus_mode = 0
+text = ">"
+script = ExtResource( 3 )
+input_type = "controller_one_move_right"
+
+[node name="ButtonPunchRight" type="Button" parent="."]
+margin_left = 1061.0
+margin_top = 14.0
+margin_right = 1257.0
+margin_bottom = 132.0
+rect_pivot_offset = Vector2( 851, 58 )
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color_focus = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color_hover = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.913725, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 1 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = SubResource( 2 )
+enabled_focus_mode = 0
+text = "PUNCH >"
+script = ExtResource( 3 )
+input_type = "controller_one_punch_right"
+
+[node name="ButtonGoalieRight" type="Button" parent="."]
+margin_left = 257.0
+margin_top = 14.0
+margin_right = 460.0
+margin_bottom = 132.0
+rect_pivot_offset = Vector2( 1079, 58 )
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color_focus = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color_hover = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.913725, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 1 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = SubResource( 2 )
+enabled_focus_mode = 0
+text = "GOALIE >"
+script = ExtResource( 3 )
+input_type = "controller_one_snap_right"

@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://GameScenes/GameArena/game_arena.gd" type="Script" id=1]
+[ext_resource path="res://GameUI/ui_layer.gd" type="Script" id=2]
+[ext_resource path="res://GameScenes/GameArena/game_camera.gd" type="Script" id=3]
+[ext_resource path="res://GameUI/VirtualGamepad/VirtualGamepad.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1000, 2300 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 1000, 2300 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 2600, 1000 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 2600, 1000 )
+
+[node name="GameArena" type="Node"]
+script = ExtResource( 1 )
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+follow_viewport_enable = true
+
+[node name="ArenaBoundry" type="StaticBody2D" parent="."]
+collision_mask = 0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="LeftBoundry" type="CollisionShape2D" parent="ArenaBoundry"]
+position = Vector2( -1000, 360 )
+shape = SubResource( 1 )
+
+[node name="RightBoundry" type="CollisionShape2D" parent="ArenaBoundry"]
+position = Vector2( 2280, 360 )
+shape = SubResource( 2 )
+
+[node name="TopBoundry" type="CollisionShape2D" parent="ArenaBoundry"]
+position = Vector2( 640, -1000 )
+shape = SubResource( 3 )
+
+[node name="BottomBoundry" type="CollisionShape2D" parent="ArenaBoundry"]
+position = Vector2( 640, 1640 )
+shape = SubResource( 4 )
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+script = ExtResource( 2 )
+
+[node name="GameCamera" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+process_mode = 0
+script = ExtResource( 3 )
+
+[node name="VirtualGamepad" parent="." instance=ExtResource( 4 )]
+visible = false
+z_index = 1000

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/GameComponents/GameBalls/BasicBall/art/basic_ball_icon.png" type="Texture" id=1]
+[ext_resource path="res://GameUI/MenuElements/texture_selector_element.gd" type="Script" id=3]
+
+[node name="TextureSelectorElement" type="TextureRect"]
+margin_right = 62.0
+margin_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 62, 62 )
+mouse_filter = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 1 )
+stretch_mode = 4
+script = ExtResource( 3 )

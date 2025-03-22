@@ -1,0 +1,482 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://GameScenes/SelectionScreen/game_options_sub_menu.gd" type="Script" id=1]
+[ext_resource path="res://GameUI/MenuElements/SelectorArrowElement.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GameUI/Menus/SubMenus/resources/sub_menu_backdrop_stylebox.tres" type="StyleBox" id=3]
+[ext_resource path="res://GameUI/MenuElements/MenuElementPanel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GameUI/Menus/SubMenus/sub_menu_background_panel.gd" type="Script" id=5]
+[ext_resource path="res://GameUI/MenuElements/NumberSelectorElement.tscn" type="PackedScene" id=12]
+[ext_resource path="res://GameUI/MenuElements/resources/dudelings_ui_theme.tres" type="Theme" id=17]
+[ext_resource path="res://Assets/GameUI/fonts/custom/large_font.res" type="BitmapFont" id=25]
+[ext_resource path="res://GameUI/Menus/SubMenus/resources/sub_menu_background_panel_stylebox.tres" type="StyleBox" id=26]
+[ext_resource path="res://GameUI/fonts/main_font_bold_26.tres" type="DynamicFont" id=27]
+[ext_resource path="res://GameUI/MenuElements/OptionButtonElement.tscn" type="PackedScene" id=28]
+[ext_resource path="res://GameUI/MenuElements/MenuButtonElement.tscn" type="PackedScene" id=30]
+[ext_resource path="res://Assets/GameUI/MenuElements/art/arrow_icons.png" type="Texture" id=32]
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 1
+atlas = ExtResource( 32 )
+region = Rect2( 0, 0, 10, 14 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 1
+atlas = ExtResource( 32 )
+region = Rect2( 12, 0, 10, 14 )
+
+[node name="GameOptionsSubMenu" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_rotation = -0.0347187
+custom_styles/panel = ExtResource( 3 )
+script = ExtResource( 1 )
+
+[node name="BackgroundPanel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -300.0
+margin_top = -309.0
+margin_right = 300.0
+margin_bottom = 277.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 600, 586 )
+custom_styles/panel = ExtResource( 26 )
+script = ExtResource( 5 )
+
+[node name="MenuContainer" type="VBoxContainer" parent="BackgroundPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_rotation = 0.0845776
+custom_constants/separation = 10
+
+[node name="HeaderLabel" type="Label" parent="BackgroundPanel/MenuContainer"]
+margin_right = 600.0
+margin_bottom = 40.0
+theme = ExtResource( 17 )
+custom_fonts/font = ExtResource( 25 )
+text = "MATCH SETUP"
+align = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BackgroundPanel/MenuContainer"]
+margin_top = 50.0
+margin_right = 600.0
+margin_bottom = 586.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="ElementContainer" type="VBoxContainer" parent="BackgroundPanel/MenuContainer/ScrollContainer"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 574.0
+margin_bottom = 628.0
+size_flags_horizontal = 3
+custom_constants/separation = 0
+
+[node name="WinCondition" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer" instance=ExtResource( 4 )]
+margin_right = 570.0
+_menu_element = NodePath("OptionButtonElement")
+
+[node name="Label" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/WinCondition"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 21.0
+margin_top = -16.0
+margin_right = 153.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 27 )
+text = "Win Condition"
+
+[node name="OptionButtonElement" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/WinCondition" instance=ExtResource( 28 )]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -205.0
+margin_top = -14.5
+margin_right = -30.0
+margin_bottom = 14.5
+grow_horizontal = 0
+grow_vertical = 2
+rect_min_size = Vector2( 175, 40 )
+size_flags_horizontal = 5
+text = "Gametype"
+
+[node name="HSeparator6" type="HSeparator" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer"]
+show_behind_parent = true
+margin_top = 72.0
+margin_right = 570.0
+margin_bottom = 80.0
+
+[node name="TimeLimit" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer" instance=ExtResource( 4 )]
+margin_top = 80.0
+margin_right = 570.0
+margin_bottom = 152.0
+_menu_element = NodePath("../MatchPoints/NumberSelectorElement/RightSelectorArrowElement")
+_other_menu_element = NodePath("../MatchPoints/NumberSelectorElement/LeftSelectorArrowElement")
+
+[node name="Label" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/TimeLimit"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 21.0
+margin_top = -16.0
+margin_right = 153.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 27 )
+text = "Time Limit"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="NumberSelectorElement" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/TimeLimit" instance=ExtResource( 12 )]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -205.0
+margin_top = -20.0
+margin_right = -30.0
+margin_bottom = 20.0
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+_left_arrow = NodePath("LeftSelectorArrowElement")
+_right_arrow = NodePath("RightSelectorArrowElement")
+min_value = 1
+max_value = 60
+value = 1
+
+[node name="RightSelectorArrowElement" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/TimeLimit/NumberSelectorElement" instance=ExtResource( 2 )]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -21.9999
+margin_top = -7.0
+margin_right = -11.9999
+margin_bottom = 7.0
+rect_min_size = Vector2( 10, 14 )
+rect_pivot_offset = Vector2( 5, 7 )
+focus_neighbour_top = NodePath("../../../WinCondition")
+texture_normal = SubResource( 7 )
+texture_pressed = SubResource( 7 )
+texture_hover = SubResource( 7 )
+texture_disabled = SubResource( 8 )
+texture_focused = SubResource( 7 )
+texture_click_mask = null
+
+[node name="LeftSelectorArrowElement" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/TimeLimit/NumberSelectorElement" instance=ExtResource( 2 )]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 12.0
+margin_top = -7.0
+margin_right = 22.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 10, 14 )
+rect_pivot_offset = Vector2( 5, 7 )
+focus_neighbour_top = NodePath("../../../WinCondition")
+texture_normal = SubResource( 7 )
+texture_pressed = SubResource( 7 )
+texture_hover = SubResource( 7 )
+texture_disabled = SubResource( 8 )
+texture_focused = SubResource( 7 )
+texture_click_mask = null
+flip_h = true
+
+[node name="MatchPoints" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer" instance=ExtResource( 4 )]
+margin_top = 152.0
+margin_right = 570.0
+margin_bottom = 224.0
+_menu_element = NodePath("NumberSelectorElement/RightSelectorArrowElement")
+_other_menu_element = NodePath("NumberSelectorElement/LeftSelectorArrowElement")
+
+[node name="Label" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/MatchPoints"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 21.0
+margin_top = -16.0
+margin_right = 153.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 27 )
+text = "Match Points"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="NumberSelectorElement" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/MatchPoints" instance=ExtResource( 12 )]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -205.0
+margin_top = -20.0
+margin_right = -30.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+_left_arrow = NodePath("LeftSelectorArrowElement")
+_right_arrow = NodePath("RightSelectorArrowElement")
+
+[node name="RightSelectorArrowElement" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/MatchPoints/NumberSelectorElement" instance=ExtResource( 2 )]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -22.0
+margin_top = -7.0
+margin_right = -12.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 10, 14 )
+rect_pivot_offset = Vector2( 5, 7 )
+focus_neighbour_top = NodePath("../../../WinCondition")
+texture_normal = SubResource( 7 )
+texture_pressed = SubResource( 7 )
+texture_hover = SubResource( 7 )
+texture_disabled = SubResource( 8 )
+texture_focused = SubResource( 7 )
+texture_click_mask = null
+
+[node name="LeftSelectorArrowElement" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/MatchPoints/NumberSelectorElement" instance=ExtResource( 2 )]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 12.0
+margin_top = -7.0
+margin_right = 22.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 10, 14 )
+rect_pivot_offset = Vector2( 5, 7 )
+focus_neighbour_top = NodePath("../../../WinCondition")
+texture_normal = SubResource( 7 )
+texture_pressed = SubResource( 7 )
+texture_hover = SubResource( 7 )
+texture_disabled = SubResource( 8 )
+texture_focused = SubResource( 7 )
+texture_click_mask = null
+flip_h = true
+
+[node name="HSeparator0" type="HSeparator" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer"]
+show_behind_parent = true
+margin_top = 224.0
+margin_right = 570.0
+margin_bottom = 232.0
+
+[node name="MinGameBalls" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer" instance=ExtResource( 4 )]
+margin_top = 232.0
+margin_right = 570.0
+margin_bottom = 304.0
+_menu_element = NodePath("NumberSelectorElement/RightSelectorArrowElement")
+_other_menu_element = NodePath("NumberSelectorElement/LeftSelectorArrowElement")
+
+[node name="Label" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/MinGameBalls"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 21.0
+margin_top = -16.0
+margin_right = 153.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 27 )
+text = "Min. Ball Count"
+
+[node name="NumberSelectorElement" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/MinGameBalls" instance=ExtResource( 12 )]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -205.0
+margin_top = -20.0
+margin_right = -30.0
+margin_bottom = 20.0
+_left_arrow = NodePath("LeftSelectorArrowElement")
+_right_arrow = NodePath("RightSelectorArrowElement")
+
+[node name="RightSelectorArrowElement" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/MinGameBalls/NumberSelectorElement" instance=ExtResource( 2 )]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -21.9999
+margin_top = -6.99997
+margin_right = -11.9999
+margin_bottom = 7.00003
+rect_min_size = Vector2( 10, 14 )
+rect_pivot_offset = Vector2( 5, 7 )
+texture_normal = SubResource( 7 )
+texture_pressed = SubResource( 7 )
+texture_hover = SubResource( 7 )
+texture_disabled = SubResource( 8 )
+texture_focused = SubResource( 7 )
+texture_click_mask = null
+
+[node name="LeftSelectorArrowElement" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/MinGameBalls/NumberSelectorElement" instance=ExtResource( 2 )]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 12.0
+margin_top = -7.0
+margin_right = 22.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 10, 14 )
+rect_pivot_offset = Vector2( 5, 7 )
+focus_previous = NodePath("../../../MatchPoints/NumberSelectorElement/RightSelectorArrowElement")
+texture_normal = SubResource( 7 )
+texture_pressed = SubResource( 7 )
+texture_hover = SubResource( 7 )
+texture_disabled = SubResource( 8 )
+texture_focused = SubResource( 7 )
+texture_click_mask = null
+flip_h = true
+
+[node name="HSeparator1" type="HSeparator" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer"]
+show_behind_parent = true
+margin_top = 304.0
+margin_right = 570.0
+margin_bottom = 312.0
+
+[node name="DefaultBall" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer" instance=ExtResource( 4 )]
+margin_top = 312.0
+margin_right = 570.0
+margin_bottom = 384.0
+_menu_element = NodePath("OptionButtonElement")
+
+[node name="Label" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/DefaultBall"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 21.0
+margin_top = -16.0
+margin_right = 161.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 27 )
+text = "Default Ball Type"
+
+[node name="OptionButtonElement" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/DefaultBall" instance=ExtResource( 28 )]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -205.0
+margin_top = -20.0
+margin_right = -30.0
+margin_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+rect_min_size = Vector2( 175, 40 )
+size_flags_horizontal = 5
+text = "GAME BALLS"
+
+[node name="HSeparator2" type="HSeparator" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer"]
+show_behind_parent = true
+margin_top = 384.0
+margin_right = 570.0
+margin_bottom = 392.0
+
+[node name="GameBallSizes" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer" instance=ExtResource( 4 )]
+margin_top = 392.0
+margin_right = 570.0
+margin_bottom = 464.0
+_menu_element = NodePath("OptionButtonElement")
+
+[node name="Label" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/GameBallSizes"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 21.0
+margin_top = -16.0
+margin_right = 153.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 27 )
+text = "Default Ball Size"
+
+[node name="OptionButtonElement" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/GameBallSizes" instance=ExtResource( 28 )]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -205.0
+margin_top = -14.5
+margin_right = -30.0
+margin_bottom = 14.5
+grow_horizontal = 0
+grow_vertical = 2
+rect_min_size = Vector2( 175, 40 )
+size_flags_horizontal = 5
+text = "SIZES"
+
+[node name="HSeparator3" type="HSeparator" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer"]
+show_behind_parent = true
+margin_top = 464.0
+margin_right = 570.0
+margin_bottom = 472.0
+
+[node name="PickupSpawnRates" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer" instance=ExtResource( 4 )]
+margin_top = 472.0
+margin_right = 570.0
+margin_bottom = 544.0
+_menu_element = NodePath("OptionButtonElement")
+
+[node name="Label" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/PickupSpawnRates"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 21.0
+margin_top = -16.0
+margin_right = 153.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 27 )
+text = "Pickup Spawn Rate"
+
+[node name="OptionButtonElement" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/PickupSpawnRates" instance=ExtResource( 28 )]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -205.0
+margin_top = -14.5
+margin_right = -30.0
+margin_bottom = 14.5
+grow_horizontal = 0
+grow_vertical = 2
+rect_min_size = Vector2( 175, 40 )
+size_flags_horizontal = 5
+text = "SPAWN RATES"
+
+[node name="HSeparator4" type="HSeparator" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer"]
+show_behind_parent = true
+margin_top = 544.0
+margin_right = 570.0
+margin_bottom = 552.0
+
+[node name="ActivePickups" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer" instance=ExtResource( 4 )]
+margin_top = 552.0
+margin_right = 570.0
+margin_bottom = 624.0
+_menu_element = NodePath("MenuButtonElement")
+
+[node name="Label" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/ActivePickups"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 21.0
+margin_top = -16.0
+margin_right = 153.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 27 )
+text = "Enabled Pickups"
+
+[node name="MenuButtonElement" parent="BackgroundPanel/MenuContainer/ScrollContainer/ElementContainer/ActivePickups" instance=ExtResource( 30 )]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -205.0
+margin_top = -20.0
+margin_right = -30.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 175, 40 )
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../../PickupSpawnRates/OptionButtonElement")
+focus_neighbour_right = NodePath(".")
+focus_previous = NodePath("../../PickupSpawnRates/OptionButtonElement")
+text = "PICKUPS..."
+align = 2

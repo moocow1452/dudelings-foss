@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://GameScenes/SplashScreen/splash_screen.gd" type="Script" id=1]
+[ext_resource path="res://Assets/GameScenes/SplashScreen/resources/dudelings_logo_intro.ogv" type="VideoStream" id=2]
+
+[node name="SplashScreen" type="Node"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ],
+"_edit_vertical_guides_": [  ]
+}
+
+[node name="VideoPlayer" type="VideoPlayer" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+grow_horizontal = 2
+rect_min_size = Vector2( 1280, 720 )
+stream = ExtResource( 2 )

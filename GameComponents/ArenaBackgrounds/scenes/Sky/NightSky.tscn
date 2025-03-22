@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://GameComponents/ArenaBackgrounds/scenes/Sky/scenes/ShiningStars.tscn" type="PackedScene" id=1]
+[ext_resource path="res://GameComponents/ArenaBackgrounds/scenes/Sky/night_sky.gd" type="Script" id=2]
+[ext_resource path="res://Assets/ArenaBackgrounds/scenes/Sky/art/sky_night.png" type="Texture" id=3]
+
+[node name="NightSky" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="SkySprite" type="Sprite" parent="."]
+position = Vector2( 640, 400 )
+z_index = -1
+texture = ExtResource( 3 )
+
+[node name="ShiningStars" parent="." instance=ExtResource( 1 )]
+z_index = -1

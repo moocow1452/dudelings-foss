@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://GameComponents/VolleyNet/VolleyNet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://GameComponents/ArenaGoals/VolleyArenaGoal.tscn" type="PackedScene" id=3]
+[ext_resource path="res://GameComponents/DudelingRow/DudelingRow.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GameComponents/GameBalls/SpawningArea/GameBallSpawningArea.tscn" type="PackedScene" id=5]
+[ext_resource path="res://GameComponents/GameFields/game_field.gd" type="Script" id=6]
+[ext_resource path="res://GameComponents/ArenaPickups/SpawningArea/ArenaPickupSpawningArea.tscn" type="PackedScene" id=7]
+
+[node name="VolleyGameField" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -76.0
+margin_top = -76.0
+margin_right = 1364.0
+margin_bottom = 898.0
+color = Color( 0, 0, 0, 0.176471 )
+
+[node name="ArenaPickupSpawningArea" parent="." instance=ExtResource( 7 )]
+
+[node name="SpawningArea0" parent="ArenaPickupSpawningArea" index="1"]
+margin_left = 240.0
+margin_top = 266.0
+margin_right = 640.0
+margin_bottom = 466.0
+rect_min_size = Vector2( 400, 200 )
+
+[node name="SpawningArea1" parent="ArenaPickupSpawningArea" index="2"]
+margin_left = 640.0
+margin_top = 266.0
+margin_right = 1040.0
+margin_bottom = 466.0
+rect_min_size = Vector2( 400, 200 )
+
+[node name="GameBallSpawningArea" parent="." instance=ExtResource( 5 )]
+
+[node name="PlayerOneSpawnArea" parent="GameBallSpawningArea" index="0"]
+margin_top = 130.0
+margin_bottom = 180.0
+
+[node name="PlayerTwoSpawnArea" parent="GameBallSpawningArea" index="1"]
+margin_top = 130.0
+margin_bottom = 180.0
+
+[node name="VolleyNet" parent="." instance=ExtResource( 1 )]
+position = Vector2( 640, 703 )
+
+[node name="PlayerOneVolleyArenaGoal" parent="." instance=ExtResource( 3 )]
+position = Vector2( 3, 320 )
+defending_player = 1
+
+[node name="PlayerTwoVolleyArenaGoal" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1277, 320 )
+scale = Vector2( -1, 1 )
+defending_player = 2
+
+[node name="DudelingRow" parent="." instance=ExtResource( 4 )]
+position = Vector2( 640, 730 )
+_remove_center_dudeling = true
+
+[editable path="ArenaPickupSpawningArea"]
+[editable path="GameBallSpawningArea"]

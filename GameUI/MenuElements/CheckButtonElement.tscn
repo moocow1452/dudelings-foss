@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://GameUI/MenuElements/check_button_element.gd" type="Script" id=1]
+
+[node name="CheckButtonElement" type="CheckButton"]
+margin_right = 200.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 200, 72 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_colors/font_color_focus = Color( 0.0392157, 0.054902, 0.286275, 1 )
+custom_colors/font_color = Color( 0.0392157, 0.054902, 0.286275, 1 )
+custom_colors/font_color_hover = Color( 0.0392157, 0.054902, 0.286275, 1 )
+action_mode = 0
+text = "TEXT"
+script = ExtResource( 1 )

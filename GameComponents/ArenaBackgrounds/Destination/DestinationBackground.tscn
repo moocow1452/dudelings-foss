@@ -1,0 +1,536 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://GameComponents/Fireworks/fireworks.gd" type="Script" id=1]
+[ext_resource path="res://GameComponents/ArenaBackgrounds/Destination/destination_background.gd" type="Script" id=2]
+[ext_resource path="res://GameComponents/ArenaBackgrounds/scenes/Seagull/Seagull.tscn" type="PackedScene" id=3]
+[ext_resource path="res://GameComponents/ArenaBackgrounds/scenes/Sky/NightSky.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/ArenaBackgrounds/Destination/art/black-hole.png" type="Texture" id=5]
+[ext_resource path="res://Assets/ArenaBackgrounds/Destination/art/destination.png" type="Texture" id=6]
+[ext_resource path="res://Assets/ArenaBackgrounds/Destination/art/shimmer-layer.png" type="Texture" id=7]
+[ext_resource path="res://Assets/GameMusic/final-boss.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Assets/ArenaBackgrounds/Destination/art/background.png" type="Texture" id=10]
+
+[sub_resource type="Shader" id=8]
+code = "shader_type canvas_item;
+
+uniform bool stars_on = true;
+
+uniform float timeScaleFactor = .04;
+
+// Make sure to use a seamless noise texture
+uniform sampler2D noise_texture;
+
+uniform vec4 colour_muiltiplier = vec4(1.0,1.0,1.0,1.0);
+uniform vec4 colour_muiltiplier2 = vec4(1.0,1.0,1.0,1.0);
+
+uniform float brightness: hint_range(0.0, 3.0, 0.01) = 1.0;
+uniform float clouds_resolution: hint_range(0.0, 10.0, 0.01) = 3.0;
+uniform float clouds_intesity: hint_range(-0.06, 0.0, 0.001) = 0.0;
+uniform float waveyness: hint_range(0.0, 10.0, 0.01) = 0.5;
+uniform float fragmentation: hint_range(0.0, 100.0, 0.01) = 7.0;
+uniform float distortion: hint_range(0.0, 10.0, 0.01) = 0.5;
+uniform float clouds_alpha: hint_range(0.4, 0.6, 0.01) = 0.5;
+uniform float movement: hint_range(0.7, 1.3, 0.01) = 1.0;
+uniform float blur: hint_range(0.0, 10.0, 0.01) = 1.4;
+uniform float blur2: hint_range(0.0, 0.01, 0.00001) = 0.01;
+
+//uniform vec2 direction = vec2(1.0);
+
+//uniform float red =  0.001;
+//uniform float blue = 0.001;
+//uniform float green = 0.001;
+
+float localTime() {
+	return TIME * timeScaleFactor;
+}
+
+mat2 makem2(float theta) {
+	float c = cos(theta);
+	float s = sin(theta);
+	return mat2(vec2(c, -s), vec2(s, c));
+}
+
+float noise(vec2 x) {
+	return texture(noise_texture, x * blur2).x;
+}
+float noisey(vec2 y) {
+	return texture(noise_texture, y * blur2).y;
+}
+
+vec2 gradn(vec2 p) {
+	float ep = .09;
+	float gradx = noise(vec2(p.x + ep, p.y)) - noise(vec2(p.x - ep, p.y));
+	float grady = noisey(vec2(p.x, p.y + ep)) - noisey(vec2(p.x, p.y - ep));
+	return vec2(gradx, grady);
+}
+
+float flow(vec2 p) {
+	float z = 2.;
+	float rz = clouds_intesity;
+	vec2 bp = p;
+	
+	for(float i = 1.; i < 7.; ++i) {
+		p += localTime() * .6;
+		bp += localTime() * 5.9;
+		vec2 gr = gradn(i * p * .34 + localTime() * 1.);
+		gr *= makem2(localTime() * 6. - (.05 * p.x + .03 * p.y) * 90.);
+		p += gr * waveyness;
+		rz += (sin(noise(p) * fragmentation) * distortion + clouds_alpha) / z;
+		p = mix(bp, p, movement);
+		z *= blur;
+		p *= 2.;
+		bp *= 1.9;
+	}
+	return rz;
+}
+
+float rand(vec2 st) {
+	
+    return fract(sin(dot(st.xy, vec2(12.9898,72.233))) * 53758.5453123);
+}
+
+
+
+void fragment() {
+	vec2 resolution = 1.0 / SCREEN_PIXEL_SIZE;
+	vec2 fragCoord = FRAGCOORD.xy;
+	fragCoord = vec2(fragCoord.x, fragCoord.y - resolution.y );//resolution.y 
+	
+	vec2 p = fragCoord / resolution - 0.5;
+	
+	p.x *= resolution.x / resolution.y;
+	
+	p *= clouds_resolution;
+	
+	//float red = flow(p * (0.1 / sin(TIME * timeScaleFactor)));
+	//float blue = flow(p * (0.1 / cos(TIME * timeScaleFactor)));
+	//float green = flow(p * (0.1 / sin(TIME * timeScaleFactor)));
+	//float new_red = (red * sin(TIME));
+	//float new_blue = (blue * cos(TIME));
+	//float new_green = (green * sin(TIME));
+	float red = 0.2 * (sin(TIME * 0.1));
+	float blue = 0.1 ;
+	float green = 0.1 ;
+	
+	
+	float rz = flow(p);
+	vec3 col = vec3(red, blue, green) / rz;
+	col = pow(col, vec3(brightness));
+	
+	float stars = 0.0;
+	
+	if (rand(SCREEN_UV.xy / 20.0) > 0.995) //0.996
+	{
+		float r = rand(SCREEN_UV.xy);
+		stars = r * (0.5 * sin(TIME * (r * 2.0) + 1000.0 * r) + 0.5);
+	}
+	
+	if (stars_on) {
+		COLOR = vec4((col + stars) * colour_muiltiplier.rgb, 1.0) * colour_muiltiplier2;
+	}
+	else {
+		COLOR = vec4((col) * colour_muiltiplier.rgb, 1.0) * colour_muiltiplier2;
+	}
+	
+}"
+
+[sub_resource type="OpenSimplexNoise" id=9]
+
+[sub_resource type="NoiseTexture" id=10]
+width = 640
+height = 400
+seamless = true
+noise = SubResource( 9 )
+
+[sub_resource type="ShaderMaterial" id=11]
+shader = SubResource( 8 )
+shader_param/stars_on = false
+shader_param/timeScaleFactor = 0.04
+shader_param/colour_muiltiplier = Plane( 1, 1, 1, 1 )
+shader_param/colour_muiltiplier2 = Plane( 1, 1, 1, 1 )
+shader_param/brightness = 1.96
+shader_param/clouds_resolution = 5.16
+shader_param/clouds_intesity = 0.0
+shader_param/waveyness = 0.5
+shader_param/fragmentation = 7.0
+shader_param/distortion = 0.5
+shader_param/clouds_alpha = 0.4
+shader_param/movement = 0.99
+shader_param/blur = 1.4
+shader_param/blur2 = 0.01
+shader_param/noise_texture = SubResource( 10 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Float"
+length = 30.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 14.5, 30 ),
+"transitions": PoolRealArray( 2.37841, 0.353554, 1 ),
+"update": 0,
+"values": [ Vector2( 665, 541 ), Vector2( 665, 580 ), Vector2( 665, 541 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Glow"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 5, 4, 3, 2, 1 ]
+}
+
+[sub_resource type="Shader" id=12]
+code = "shader_type canvas_item;
+//render_mode blend_mix;
+
+uniform sampler2D noise_texture;
+uniform sampler2D noise_2;
+uniform float shimmer_speed : hint_range(0.0, 1.5) = 1;
+uniform vec2 tiled_factor = vec2(1.0, 1.0);
+
+void fragment() {
+	// The speed we want to scroll through the noise texture
+
+//	vec2 uv_wavy_offset;
+//	uv_wavy_offset.x = cos(UV.x + UV.y) * 0.05;
+//	uv_wavy_offset.y = sin(UV.x + UV.y) * 0.05;
+//	vec2 lookup_normal = vec2(shimmer_tex_uv.x + uv_wavy_offset.x * TIME, shimmer_tex_uv.y + uv_wavy_offset.y * TIME);
+	
+	vec4 shimmer_tex_uv = texture(TEXTURE, UV); // The 
+	
+	vec4 noise = texture(noise_texture, vec2(shimmer_tex_uv.r, shimmer_tex_uv.g) + shimmer_speed * TIME);
+	float inverted = shimmer_speed * -1.2;
+	vec4 noise2 = texture(noise_2, UV + inverted * TIME);
+	
+	vec2 final_uv_lookup = UV;
+	vec4 new_sample = texture(noise_texture, vec2(shimmer_tex_uv.r, shimmer_tex_uv.g));
+	new_sample.rgb = vec3(noise.x - noise2.x, noise.y - noise2.y, noise.z - noise2.z);
+	
+	if(shimmer_tex_uv.a == 0.0) {
+		COLOR.a = 0.0;
+	} else {  
+		COLOR.a = new_sample.r - 0.2;
+//		COLOR.a = 1.0;
+	}
+	
+	COLOR.rgb = vec3(new_sample.r, new_sample.g, new_sample.b);
+//	COLOR = texture(noise_texture, UV);
+//	COLOR.a = 1.0;
+}
+"
+
+[sub_resource type="OpenSimplexNoise" id=16]
+
+[sub_resource type="NoiseTexture" id=17]
+seamless = true
+noise = SubResource( 16 )
+
+[sub_resource type="OpenSimplexNoise" id=13]
+period = 35.4
+lacunarity = 1.98
+
+[sub_resource type="NoiseTexture" id=14]
+seamless = true
+noise = SubResource( 13 )
+
+[sub_resource type="ShaderMaterial" id=15]
+shader = SubResource( 12 )
+shader_param/shimmer_speed = 0.023
+shader_param/tiled_factor = Vector2( 1, 1 )
+shader_param/noise_texture = SubResource( 14 )
+shader_param/noise_2 = SubResource( 17 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "StageFloat"
+length = 40.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 20, 39.9 ),
+"transitions": PoolRealArray( 0.450625, 2.37841, 1 ),
+"update": 0,
+"values": [ Vector2( 602, 356 ), Vector2( 600, 380 ), Vector2( 600, 356 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "RESET"
+length = 0.001
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1480, -100 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "fly_into_scene"
+length = 30.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 3.7, 3.9, 4.1, 4.8, 5, 5.2, 5.9, 6.1, 6.3, 9.9, 10.5, 13.1, 18.2, 18.5, 18.8, 21.8, 22.2, 22.6, 25.9, 30 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1480, -100 ), Vector2( 1100, 158 ), Vector2( 1100, 158 ), Vector2( 1060, 118 ), Vector2( 1020, 158 ), Vector2( 1020, 158 ), Vector2( 1005, 130 ), Vector2( 970, 158 ), Vector2( 970, 158 ), Vector2( 941, 127 ), Vector2( 900, 158 ), Vector2( 900, 158 ), Vector2( 860, 128 ), Vector2( 525, 545 ), Vector2( 525, 545 ), Vector2( 560, 528 ), Vector2( 600, 610 ), Vector2( 600, 610 ), Vector2( 640, 580 ), Vector2( 675, 615 ), Vector2( 675, 615 ), Vector2( 1480, -100 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 17.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 9.9, 13, 25.9, 27.1, 30 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0.7, 0.7 ), Vector2( 0.7, 0.7 ), Vector2( 1.4, 1.4 ), Vector2( 1.4, 1.4 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2.8, 3.9, 4.9, 6, 7.8, 10, 12.9, 14.4, 15.6, 18.6, 19.8, 22.3, 23.1, 24, 25.1, 25.9, 27.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "fly"
+}, {
+"args": [  ],
+"method": "land"
+}, {
+"args": [  ],
+"method": "land"
+}, {
+"args": [  ],
+"method": "land"
+}, {
+"args": [  ],
+"method": "land"
+}, {
+"args": [  ],
+"method": "peck"
+}, {
+"args": [  ],
+"method": "take_off"
+}, {
+"args": [  ],
+"method": "land"
+}, {
+"args": [  ],
+"method": "peck"
+}, {
+"args": [  ],
+"method": "peck"
+}, {
+"args": [  ],
+"method": "land"
+}, {
+"args": [  ],
+"method": "peck"
+}, {
+"args": [  ],
+"method": "land"
+}, {
+"args": [  ],
+"method": "peck"
+}, {
+"args": [  ],
+"method": "peck"
+}, {
+"args": [  ],
+"method": "peck"
+}, {
+"args": [  ],
+"method": "take_off"
+}, {
+"args": [ true ],
+"method": "allow_game_ball_hit"
+} ]
+}
+
+[sub_resource type="Animation" id=18]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Destination:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "blue_player_score"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Destination:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 1.8, 2.4 ),
+"transitions": PoolRealArray( 0.307786, 1.1487, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.168627, 0.643137, 0.87451, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "red_player_score"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Destination:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 1.8, 2.4 ),
+"transitions": PoolRealArray( 0.307786, 1.1487, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.87451, 0.2, 0.168627, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="DestinationBackground" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Nebuale" type="Sprite" parent="."]
+visible = false
+material = SubResource( 11 )
+position = Vector2( 642, 402 )
+scale = Vector2( 2.01556, 2.01556 )
+texture = ExtResource( 10 )
+
+[node name="NightSky" parent="." instance=ExtResource( 4 )]
+
+[node name="GameWonFireworks" type="ColorRect" parent="."]
+margin_left = 536.0
+margin_top = 155.0
+margin_right = 736.0
+margin_bottom = 255.0
+color = Color( 1, 0.5, 0.5, 0.5 )
+script = ExtResource( 1 )
+_firework_scale = 0.8
+
+[node name="BlackHole" type="Sprite" parent="."]
+position = Vector2( 665, 541.085 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+hframes = 6
+
+[node name="HoleFloater" type="AnimationPlayer" parent="BlackHole"]
+anims/Float = SubResource( 3 )
+
+[node name="HoleSpritePlayer" type="AnimationPlayer" parent="BlackHole"]
+anims/Glow = SubResource( 4 )
+
+[node name="Destination" type="Sprite" parent="."]
+position = Vector2( 600.075, 379.095 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+
+[node name="DustMask" type="Sprite" parent="Destination"]
+visible = false
+texture = ExtResource( 7 )
+
+[node name="DestinationMask" type="Sprite" parent="Destination"]
+material = SubResource( 15 )
+position = Vector2( 25, 49 )
+texture = ExtResource( 7 )
+
+[node name="StageFloater" type="AnimationPlayer" parent="Destination"]
+anims/StageFloat = SubResource( 5 )
+
+[node name="Seagull" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1480, -100 )
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Seagull"]
+autoplay = "RESET"
+anims/RESET = SubResource( 1 )
+anims/fly_into_scene = SubResource( 2 )
+
+[node name="DestinationScore" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 18 )
+anims/blue_player_score = SubResource( 19 )
+anims/red_player_score = SubResource( 20 )
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 8 )
+autoplay = true
+bus = "Music"
+
+[node name="Tween" type="Tween" parent="."]

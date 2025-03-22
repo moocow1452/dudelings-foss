@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/ArenaBackgrounds/scenes/Sky/art/sky_dusk.png" type="Texture" id=2]
+
+[node name="DuskSky" type="Node2D"]
+
+[node name="SkySprite" type="Sprite" parent="."]
+position = Vector2( 640, 400 )
+z_index = -1
+texture = ExtResource( 2 )

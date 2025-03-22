@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Assets/ArenaBackgrounds/scenes/Sky/art/stars.png" type="Texture" id=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform sampler2D noise_texture;
+uniform sampler2D color_texture;
+uniform vec2 scroll = vec2(0.1, 0.1);
+
+void fragment() {
+	float texture_color = texture(TEXTURE, UV).a;
+	float noise_texture_color = texture(noise_texture, UV + (scroll * TIME)).r;
+	float energy = texture_color * noise_texture_color / 2.0;
+	COLOR = texture(color_texture, vec2(energy));
+}
+"
+
+[sub_resource type="Gradient" id=5]
+offsets = PoolRealArray( 0, 0.25 )
+colors = PoolColorArray( 0, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
+
+[sub_resource type="OpenSimplexNoise" id=3]
+
+[sub_resource type="NoiseTexture" id=4]
+noise = SubResource( 3 )
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/scroll = Vector2( 0.05, 0.05 )
+shader_param/noise_texture = SubResource( 4 )
+shader_param/color_texture = SubResource( 6 )
+
+[node name="ShiningStars" type="Sprite"]
+material = SubResource( 2 )
+position = Vector2( 640, 400 )
+texture = ExtResource( 2 )

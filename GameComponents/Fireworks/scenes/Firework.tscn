@@ -1,0 +1,113 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://GameComponents/Fireworks/scenes/firework.gd" type="Script" id=1]
+
+[sub_resource type="Curve" id=4]
+min_value = -200.0
+max_value = 200.0
+_data = [ Vector2( 0, 1 ), 0.0, 1376.9, 0, 0, Vector2( 1, 1 ), -14.0089, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0.0184502, 0.0136364 ), 0.0, 6.46705, 0, 0, Vector2( 1, 0.0090909 ), 0.0520486, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+resource_local_to_scene = true
+lifetime_randomness = 0.7
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 30, 0 )
+initial_velocity = 150.0
+initial_velocity_random = 0.8
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = -20.0
+linear_accel_random = 0.5
+linear_accel_curve = SubResource( 5 )
+scale_random = 0.5
+scale_curve = SubResource( 2 )
+
+[sub_resource type="StreamTexture" id=7]
+resource_local_to_scene = true
+flags = 5
+load_path = "res://.import/firework_particle.png-0f0d9be2cde714486e6a772e1f76b53e.stex"
+
+[sub_resource type="ParticlesMaterial" id=8]
+resource_local_to_scene = true
+lifetime_randomness = 0.7
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 30, 0 )
+initial_velocity = 150.0
+initial_velocity_random = 0.8
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = -20.0
+linear_accel_random = 0.5
+linear_accel_curve = SubResource( 5 )
+scale_random = 0.5
+scale_curve = SubResource( 2 )
+
+[sub_resource type="StreamTexture" id=9]
+resource_local_to_scene = true
+flags = 5
+load_path = "res://.import/firework_particle.png-0f0d9be2cde714486e6a772e1f76b53e.stex"
+
+[sub_resource type="ParticlesMaterial" id=10]
+resource_local_to_scene = true
+lifetime_randomness = 0.7
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 30, 0 )
+initial_velocity = 150.0
+initial_velocity_random = 0.8
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = -20.0
+linear_accel_random = 0.5
+linear_accel_curve = SubResource( 5 )
+scale_random = 0.5
+scale_curve = SubResource( 2 )
+
+[sub_resource type="StreamTexture" id=11]
+resource_local_to_scene = true
+flags = 5
+load_path = "res://.import/firework_particle.png-0f0d9be2cde714486e6a772e1f76b53e.stex"
+
+[node name="Firework" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="FireworkLayer0" type="Particles2D" parent="."]
+emitting = false
+amount = 50
+lifetime = 1.25
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 6 )
+texture = SubResource( 7 )
+
+[node name="FireworkLayer1" type="Particles2D" parent="."]
+emitting = false
+amount = 50
+lifetime = 1.25
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 8 )
+texture = SubResource( 9 )
+
+[node name="FireworkLayer2" type="Particles2D" parent="."]
+emitting = false
+amount = 50
+lifetime = 1.25
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 10 )
+texture = SubResource( 11 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = "Sound"

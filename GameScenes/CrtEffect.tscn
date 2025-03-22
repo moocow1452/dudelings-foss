@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/pure_scanline.shader" type="Shader" id=1]
+[ext_resource path="res://GameScenes/crt_effect_layer.gd" type="Script" id=2]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/scanline_count = 180.0
+shader_param/effect_intensity = 0.81
+shader_param/red_abberation = 0.0
+shader_param/green_abberation = 1.0
+shader_param/blue_abberation = -1.0
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource( 1 )
+margin_right = 1280.0
+margin_bottom = 720.0

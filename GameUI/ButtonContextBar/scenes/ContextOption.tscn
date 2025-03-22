@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://GameUI/MenuElements/resources/dudelings_ui_theme.tres" type="Theme" id=1]
+[ext_resource path="res://Assets/GameUI/art/controller_buttons.png" type="Texture" id=2]
+[ext_resource path="res://GameUI/ButtonContextBar/scenes/context_option.gd" type="Script" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+resource_local_to_scene = true
+flags = 5
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 50, 50 )
+
+[node name="ContextOption" type="HBoxContainer"]
+margin_right = 95.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+size_flags_horizontal = 8
+size_flags_vertical = 8
+custom_constants/separation = 5
+script = ExtResource( 3 )
+
+[node name="ButtonTexture" type="TextureRect" parent="."]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource( 1 )
+stretch_mode = 4
+
+[node name="ContextLabel" type="Label" parent="."]
+margin_left = 55.0
+margin_top = 15.0
+margin_right = 95.0
+margin_bottom = 35.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+theme = ExtResource( 1 )
+text = "TEXT"
+align = 2
+valign = 1

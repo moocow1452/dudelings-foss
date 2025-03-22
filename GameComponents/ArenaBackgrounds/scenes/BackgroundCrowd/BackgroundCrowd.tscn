@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://GameComponents/ArenaBackgrounds/scenes/BackgroundCrowd/background_crowd.gd" type="Script" id=1]
+[ext_resource path="res://Assets/ArenaBackgrounds/scenes/BackgroundCrowd/art/background_crowd.png" type="Texture" id=2]
+
+[node name="BackgroundCrowd" type="Sprite"]
+texture = ExtResource( 2 )
+hframes = 2
+vframes = 3
+script = ExtResource( 1 )

@@ -1,0 +1,18 @@
+[gd_scene format=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1280.0
+margin_bottom = 268.0
+color = Color( 0.172549, 0.164706, 0.196078, 1 )
+
+[node name="LineEdit" type="LineEdit" parent="."]
+margin_top = 233.0
+margin_right = 1280.0
+margin_bottom = 268.0
+
+[node name="TextEdit" type="TextEdit" parent="."]
+margin_right = 1280.0
+margin_bottom = 233.0
+readonly = true

@@ -1,0 +1,756 @@
+[gd_scene load_steps=81 format=2]
+
+[ext_resource path="res://GameComponents/Fireworks/fireworks.gd" type="Script" id=1]
+[ext_resource path="res://GameComponents/ArenaBackgrounds/Beach/beach_background.gd" type="Script" id=2]
+[ext_resource path="res://Assets/ArenaBackgrounds/Beach/art/beach_sand.png" type="Texture" id=3]
+[ext_resource path="res://Assets/ArenaBackgrounds/Beach/art/beach_waves.png" type="Texture" id=4]
+[ext_resource path="res://GameComponents/ArenaBackgrounds/scenes/Seagull/Seagull.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/ArenaBackgrounds/Beach/art/cruise_ship.png" type="Texture" id=6]
+[ext_resource path="res://Assets/ArenaBackgrounds/Beach/art/small_umbrella.png" type="Texture" id=7]
+[ext_resource path="res://Assets/ArenaBackgrounds/Beach/art/speedboat.png" type="Texture" id=8]
+[ext_resource path="res://Assets/ArenaBackgrounds/Beach/art/large_umbrella.png" type="Texture" id=9]
+[ext_resource path="res://GameComponents/ArenaBackgrounds/scenes/Sky/DaySky.tscn" type="PackedScene" id=10]
+[ext_resource path="res://GameComponents/ArenaBackgrounds/scenes/Sky/DuskSky.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Assets/ArenaBackgrounds/Beach/art/beach_waves_dusk.png" type="Texture" id=12]
+[ext_resource path="res://Assets/ArenaBackgrounds/Beach/art/wave_dusk_shimmer.png" type="Texture" id=13]
+[ext_resource path="res://GameComponents/ArenaBackgrounds/ground_shadow.gdshader" type="Shader" id=14]
+[ext_resource path="res://GameComponents/ArenaBackgrounds/ground_shadow.tres" type="OpenSimplexNoise" id=15]
+[ext_resource path="res://Assets/GameMusic/beach_day.ogg" type="AudioStream" id=16]
+
+[sub_resource type="Shader" id=153]
+
+[sub_resource type="ShaderMaterial" id=154]
+shader = SubResource( 153 )
+
+[sub_resource type="NoiseTexture" id=152]
+width = 640
+height = 360
+seamless = true
+noise = ExtResource( 15 )
+
+[sub_resource type="ShaderMaterial" id=150]
+shader = ExtResource( 14 )
+shader_param/animation_speed_x = 0.003
+shader_param/animation_speed_y = 0.002
+shader_param/perspective = 0.4
+shader_param/intensity = 0.308
+shader_param/noise_texture = SubResource( 152 )
+
+[sub_resource type="Shader" id=155]
+code = "shader_type canvas_item;
+
+uniform float animation_speed_x = 0.002;
+uniform float animation_speed_y = 0.005;
+uniform float intensity = 1;
+uniform sampler2D noise_texture;
+
+void fragment() {
+	vec4 input_color = texture(TEXTURE, UV);
+	
+	float perspective_offset = UV.x;// * perspective;
+	vec2 uv = vec2(perspective_offset + TIME * animation_speed_x, UV.y + TIME * animation_speed_y);
+	vec4 noise_color = texture(noise_texture, uv);
+	vec4 final_color = noise_color;
+	float subtract = noise_color.r * intensity;
+	final_color.rgb = vec3(
+		input_color.r,
+		input_color.g,
+		input_color.b
+	);
+	final_color.a = input_color.a;
+//	final_color.a = final_color.r;
+	COLOR = final_color;
+}
+"
+
+[sub_resource type="ShaderMaterial" id=156]
+shader = SubResource( 155 )
+shader_param/animation_speed_x = 0.002
+shader_param/animation_speed_y = 0.005
+shader_param/intensity = 1.0
+
+[sub_resource type="AtlasTexture" id=125]
+flags = 1
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 1380, 120 )
+
+[sub_resource type="AtlasTexture" id=126]
+flags = 1
+atlas = ExtResource( 4 )
+region = Rect2( 1380, 0, 1380, 120 )
+
+[sub_resource type="AtlasTexture" id=127]
+flags = 1
+atlas = ExtResource( 4 )
+region = Rect2( 2760, 0, 1380, 120 )
+
+[sub_resource type="AtlasTexture" id=128]
+flags = 1
+atlas = ExtResource( 4 )
+region = Rect2( 4140, 0, 1380, 120 )
+
+[sub_resource type="AtlasTexture" id=129]
+flags = 1
+atlas = ExtResource( 4 )
+region = Rect2( 5520, 0, 1380, 120 )
+
+[sub_resource type="AtlasTexture" id=130]
+flags = 1
+atlas = ExtResource( 4 )
+region = Rect2( 6900, 0, 1380, 120 )
+
+[sub_resource type="AtlasTexture" id=131]
+flags = 1
+atlas = ExtResource( 4 )
+region = Rect2( 8280, 0, 1380, 120 )
+
+[sub_resource type="AtlasTexture" id=132]
+flags = 1
+atlas = ExtResource( 4 )
+region = Rect2( 9660, 0, 1380, 120 )
+
+[sub_resource type="AtlasTexture" id=133]
+flags = 1
+atlas = ExtResource( 4 )
+region = Rect2( 11040, 0, 1380, 120 )
+
+[sub_resource type="AtlasTexture" id=134]
+flags = 1
+atlas = ExtResource( 4 )
+region = Rect2( 12420, 0, 1380, 120 )
+
+[sub_resource type="AtlasTexture" id=135]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 0, 0, 1380, 120 )
+
+[sub_resource type="AtlasTexture" id=136]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 1380, 0, 1380, 120 )
+
+[sub_resource type="AtlasTexture" id=137]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 2760, 0, 1380, 120 )
+
+[sub_resource type="AtlasTexture" id=138]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 4140, 0, 1380, 120 )
+
+[sub_resource type="AtlasTexture" id=139]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 5520, 0, 1380, 120 )
+
+[sub_resource type="AtlasTexture" id=140]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 6900, 0, 1380, 120 )
+
+[sub_resource type="AtlasTexture" id=141]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 8280, 0, 1380, 120 )
+
+[sub_resource type="AtlasTexture" id=142]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 9660, 0, 1380, 120 )
+
+[sub_resource type="AtlasTexture" id=143]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 11040, 0, 1380, 120 )
+
+[sub_resource type="AtlasTexture" id=144]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 12420, 0, 1380, 120 )
+
+[sub_resource type="SpriteFrames" id=11]
+animations = [ {
+"frames": [ SubResource( 125 ), SubResource( 126 ), SubResource( 127 ), SubResource( 128 ), SubResource( 129 ), SubResource( 130 ), SubResource( 131 ), SubResource( 132 ), SubResource( 133 ), SubResource( 134 ) ],
+"loop": false,
+"name": "waves_day",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 135 ), SubResource( 136 ), SubResource( 137 ), SubResource( 138 ), SubResource( 139 ), SubResource( 140 ), SubResource( 141 ), SubResource( 142 ), SubResource( 143 ), SubResource( 144 ) ],
+"loop": false,
+"name": "waves_dusk",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=145]
+flags = 1
+atlas = ExtResource( 13 )
+region = Rect2( 0, 0, 139, 44 )
+
+[sub_resource type="AtlasTexture" id=146]
+flags = 1
+atlas = ExtResource( 13 )
+region = Rect2( 139, 0, 139, 44 )
+
+[sub_resource type="AtlasTexture" id=147]
+flags = 1
+atlas = ExtResource( 13 )
+region = Rect2( 278, 0, 139, 44 )
+
+[sub_resource type="SpriteFrames" id=148]
+animations = [ {
+"frames": [ SubResource( 145 ), SubResource( 146 ), SubResource( 147 ) ],
+"loop": true,
+"name": "shimmer",
+"speed": 2.0
+} ]
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 74, 36 )
+
+[sub_resource type="AtlasTexture" id=23]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 74, 0, 74, 36 )
+
+[sub_resource type="AtlasTexture" id=24]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 148, 0, 74, 36 )
+
+[sub_resource type="AtlasTexture" id=25]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 222, 0, 74, 36 )
+
+[sub_resource type="AtlasTexture" id=26]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 296, 0, 74, 36 )
+
+[sub_resource type="AtlasTexture" id=27]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 370, 0, 74, 36 )
+
+[sub_resource type="AtlasTexture" id=28]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 444, 0, 74, 36 )
+
+[sub_resource type="AtlasTexture" id=29]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 518, 0, 74, 36 )
+
+[sub_resource type="AtlasTexture" id=30]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 592, 0, 74, 36 )
+
+[sub_resource type="AtlasTexture" id=31]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 666, 0, 74, 36 )
+
+[sub_resource type="SpriteFrames" id=32]
+animations = [ {
+"frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=99]
+flags = 1
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 50, 22 )
+
+[sub_resource type="AtlasTexture" id=100]
+flags = 1
+atlas = ExtResource( 8 )
+region = Rect2( 0, 24, 50, 22 )
+
+[sub_resource type="AtlasTexture" id=101]
+flags = 1
+atlas = ExtResource( 8 )
+region = Rect2( 0, 48, 50, 22 )
+
+[sub_resource type="AtlasTexture" id=102]
+flags = 1
+atlas = ExtResource( 8 )
+region = Rect2( 0, 72, 50, 22 )
+
+[sub_resource type="AtlasTexture" id=103]
+flags = 1
+atlas = ExtResource( 8 )
+region = Rect2( 0, 96, 50, 22 )
+
+[sub_resource type="SpriteFrames" id=37]
+animations = [ {
+"frames": [ SubResource( 99 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 100 ), SubResource( 101 ), SubResource( 102 ), SubResource( 103 ) ],
+"loop": true,
+"name": "running",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=124]
+extents = Vector2( 15, 5 )
+
+[sub_resource type="Animation" id=69]
+resource_name = "RESET"
+length = 0.001
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpeedboatSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1100, 515 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpeedboatSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpeedboatSprite:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SpeedboatSprite/Area2D/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=70]
+resource_name = "move_0"
+length = 40.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpeedboatSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 6, 11.9, 18, 30, 40 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1100, 515 ), Vector2( 1240, 505 ), Vector2( 1000, 505 ), Vector2( 1240, 495 ), Vector2( 800, 495 ), Vector2( 1100, 515 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpeedboatSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 6, 18, 40 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.8, 0.8 ), Vector2( 0.6, 0.6 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpeedboatSprite:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 6, 12, 18, 30, 40 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SpeedboatSprite/Area2D/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5, 39.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[sub_resource type="Animation" id=71]
+resource_name = "move_1"
+length = 50.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpeedboatSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 13, 21, 46, 50 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1100, 515 ), Vector2( 400, 485 ), Vector2( 20, 485 ), Vector2( 1240, 505 ), Vector2( 1100, 515 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpeedboatSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 13, 46, 50 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.5, 0.5 ), Vector2( 0.8, 0.8 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpeedboatSprite:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 21, 46, 50 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SpeedboatSprite/Area2D/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5, 49.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[sub_resource type="AtlasTexture" id=47]
+flags = 1
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 112, 88 )
+
+[sub_resource type="AtlasTexture" id=48]
+flags = 1
+atlas = ExtResource( 7 )
+region = Rect2( 112, 0, 112, 88 )
+
+[sub_resource type="AtlasTexture" id=49]
+flags = 1
+atlas = ExtResource( 7 )
+region = Rect2( 224, 0, 112, 88 )
+
+[sub_resource type="AtlasTexture" id=50]
+flags = 1
+atlas = ExtResource( 7 )
+region = Rect2( 112, 0, 112, 88 )
+
+[sub_resource type="AtlasTexture" id=51]
+flags = 1
+atlas = ExtResource( 7 )
+region = Rect2( 336, 0, 112, 88 )
+
+[sub_resource type="AtlasTexture" id=52]
+flags = 1
+atlas = ExtResource( 7 )
+region = Rect2( 448, 0, 112, 88 )
+
+[sub_resource type="SpriteFrames" id=46]
+animations = [ {
+"frames": [ SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ) ],
+"loop": true,
+"name": "default",
+"speed": 3.0
+}, {
+"frames": [ SubResource( 51 ), SubResource( 52 ) ],
+"loop": false,
+"name": "flip",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=38]
+flags = 1
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 154, 160 )
+
+[sub_resource type="AtlasTexture" id=39]
+flags = 1
+atlas = ExtResource( 9 )
+region = Rect2( 154, 0, 154, 160 )
+
+[sub_resource type="SpriteFrames" id=40]
+animations = [ {
+"frames": [ SubResource( 38 ), SubResource( 39 ) ],
+"loop": true,
+"name": "default",
+"speed": 2.0
+} ]
+
+[sub_resource type="Animation" id=97]
+resource_name = "RESET"
+length = 0.001
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -200, 250 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=98]
+resource_name = "fly_into_scene"
+length = 60.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 8.1, 16.6, 19.2, 25.8, 30.9, 32.5, 38, 40.4, 43.6, 45, 48.2, 49.9, 53.2, 60 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -200, 250 ), Vector2( 1013, 510 ), Vector2( 1013, 510 ), Vector2( 862, 402 ), Vector2( 225, 520 ), Vector2( 225, 520 ), Vector2( 300, 390 ), Vector2( 815, 389 ), Vector2( 1100, 515 ), Vector2( 1125, 515 ), Vector2( 1125, 515 ), Vector2( 1100, 515 ), Vector2( 1100, 515 ), Vector2( 1350, 300 ), Vector2( 1350, 300 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 9.3, 10.6, 14.4, 27.3, 44.5, 49 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false, true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 16.6, 19.2, 25.8, 32.8, 40.6, 60 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0.8, 0.8 ), Vector2( 0.5, 0.5 ), Vector2( 0.5, 0.5 ), Vector2( 0.3, 0.3 ), Vector2( 0.3, 0.3 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 7.8, 11.9, 16.6, 25.5, 26.5, 27.9, 28.7, 30.7, 40.1, 40.6, 49.9, 50.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "fly"
+}, {
+"args": [  ],
+"method": "land"
+}, {
+"args": [  ],
+"method": "look"
+}, {
+"args": [  ],
+"method": "take_off"
+}, {
+"args": [  ],
+"method": "land"
+}, {
+"args": [  ],
+"method": "peck"
+}, {
+"args": [  ],
+"method": "peck"
+}, {
+"args": [  ],
+"method": "peck"
+}, {
+"args": [  ],
+"method": "take_off"
+}, {
+"args": [  ],
+"method": "land_on_water"
+}, {
+"args": [ true ],
+"method": "allow_background_object_hit"
+}, {
+"args": [  ],
+"method": "take_off"
+}, {
+"args": [ false ],
+"method": "allow_background_object_hit"
+} ]
+}
+
+[node name="BeachBackground" type="Node2D"]
+material = SubResource( 154 )
+script = ExtResource( 2 )
+
+[node name="DuskSky" parent="." instance=ExtResource( 11 )]
+
+[node name="DaySky" parent="." instance=ExtResource( 10 )]
+
+[node name="LeftFireworks" type="ColorRect" parent="."]
+margin_left = 116.0
+margin_top = 272.0
+margin_right = 316.0
+margin_bottom = 372.0
+rect_min_size = Vector2( 200, 100 )
+color = Color( 1, 0.5, 0.5, 0.5 )
+script = ExtResource( 1 )
+_firework_scale = 0.6
+
+[node name="MiddleFireworks" type="ColorRect" parent="."]
+margin_left = 500.0
+margin_top = 112.0
+margin_right = 800.0
+margin_bottom = 312.0
+rect_min_size = Vector2( 300, 200 )
+color = Color( 1, 0.5, 0.5, 0.5 )
+script = ExtResource( 1 )
+_firework_scale = 0.8
+
+[node name="RightFireworks" type="ColorRect" parent="."]
+margin_left = 964.0
+margin_top = 272.0
+margin_right = 1164.0
+margin_bottom = 372.0
+rect_min_size = Vector2( 200, 100 )
+color = Color( 1, 0.5, 0.5, 0.5 )
+script = ExtResource( 1 )
+_firework_scale = 0.6
+
+[node name="SandSprite" type="Sprite" parent="."]
+material = SubResource( 150 )
+position = Vector2( 0, 665 )
+texture = ExtResource( 3 )
+offset = Vector2( 640, 0 )
+vframes = 2
+
+[node name="WavesSprite" type="AnimatedSprite" parent="."]
+material = SubResource( 156 )
+position = Vector2( 640, 540 )
+frames = SubResource( 11 )
+animation = "waves_day"
+
+[node name="WaveShimmer" type="AnimatedSprite" parent="."]
+position = Vector2( 982, 502 )
+frames = SubResource( 148 )
+animation = "shimmer"
+
+[node name="CruiseShipSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -100, 463 )
+frames = SubResource( 32 )
+
+[node name="SpeedboatSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 1100, 515 )
+frames = SubResource( 37 )
+
+[node name="Area2D" type="Area2D" parent="SpeedboatSprite"]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpeedboatSprite/Area2D"]
+shape = SubResource( 124 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpeedboatSprite"]
+root_node = NodePath("../..")
+anims/RESET = SubResource( 69 )
+anims/move_0 = SubResource( 70 )
+anims/move_1 = SubResource( 71 )
+
+[node name="SmallUmbrellaSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 200, 520 )
+frames = SubResource( 46 )
+animation = "flip"
+
+[node name="LargeUmbrellaSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 1007, 568 )
+frames = SubResource( 40 )
+
+[node name="Seagull" parent="." instance=ExtResource( 5 )]
+position = Vector2( -200, 250 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Seagull"]
+autoplay = "RESET"
+anims/RESET = SubResource( 97 )
+anims/fly_into_scene = SubResource( 98 )
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 16 )
+autoplay = true
+bus = "Music"
+
+[node name="Tween" type="Tween" parent="."]

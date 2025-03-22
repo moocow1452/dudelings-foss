@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://GameComponents/ArenaBackgrounds/scenes/Sky/scenes/flying_birds.gd" type="Script" id=1]
+[ext_resource path="res://Assets/ArenaBackgrounds/scenes/Sky/art/birds_flying.png" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 5
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 120, 50 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 5
+atlas = ExtResource( 2 )
+region = Rect2( 120, 0, 120, 50 )
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "fly",
+"speed": 3.0
+} ]
+
+[node name="FlyingBirds" type="AnimatedSprite"]
+frames = SubResource( 1 )
+animation = "fly"
+script = ExtResource( 1 )

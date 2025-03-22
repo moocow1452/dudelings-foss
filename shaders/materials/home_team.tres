@@ -1,0 +1,23 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://shaders/team_shader.shader" type="Shader" id=1]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/show_stripes = true
+shader_param/jersey_base = Color( 0.84, 0.93, 0.85, 1 )
+shader_param/output_color1 = Color( 0.584314, 0.803922, 0.929412, 1 )
+shader_param/jersey_accent = Color( 0.93, 0.85, 0.29, 1 )
+shader_param/output_color2 = Color( 0, 0.564706, 0.788235, 1 )
+shader_param/input_color3 = Color( 0.870588, 0.996078, 1, 1 )
+shader_param/output_color3 = Color( 1, 1, 1, 1 )
+shader_param/input_color4 = null
+shader_param/output_color4 = null
+shader_param/input_color5 = null
+shader_param/output_color5 = null
+shader_param/input_color6 = null
+shader_param/output_color6 = null
+shader_param/input_color7 = null
+shader_param/output_color7 = null
+shader_param/input_color8 = null
+shader_param/output_color8 = null

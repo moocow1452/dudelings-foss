@@ -1,0 +1,567 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://GameUI/MenuElements/resources/dudelings_ui_theme.tres" type="Theme" id=1]
+[ext_resource path="res://GameUI/Menus/SubMenus/CreditsSubMenu/credits_sub_menu.gd" type="Script" id=2]
+[ext_resource path="res://GameUI/Menus/SubMenus/resources/sub_menu_background_panel_stylebox.tres" type="StyleBox" id=3]
+[ext_resource path="res://GameUI/Menus/SubMenus/resources/sub_menu_backdrop_stylebox.tres" type="StyleBox" id=4]
+[ext_resource path="res://GameUI/fonts/main_font_bold_32.tres" type="DynamicFont" id=5]
+[ext_resource path="res://GameUI/fonts/main_font_bold_italic_24.tres" type="DynamicFont" id=6]
+[ext_resource path="res://GameUI/Menus/SubMenus/sub_menu_background_panel.gd" type="Script" id=8]
+[ext_resource path="res://Assets/GameUI/fonts/custom/large_font.res" type="BitmapFont" id=9]
+
+[node name="CreditsSubMenu" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+focus_mode = 2
+custom_styles/panel = ExtResource( 4 )
+script = ExtResource( 2 )
+
+[node name="BackgroundPanel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -600.0
+margin_top = -306.0
+margin_right = 600.0
+margin_bottom = 274.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 1200, 580 )
+custom_styles/panel = ExtResource( 3 )
+script = ExtResource( 8 )
+
+[node name="MenuContainer" type="VBoxContainer" parent="BackgroundPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_constants/separation = 10
+alignment = 1
+
+[node name="HeaderLabel" type="Label" parent="BackgroundPanel/MenuContainer"]
+margin_right = 1200.0
+margin_bottom = 40.0
+grow_horizontal = 2
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 9 )
+text = "CREDITS"
+align = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BackgroundPanel/MenuContainer"]
+margin_top = 50.0
+margin_right = 1200.0
+margin_bottom = 580.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BackgroundPanel/MenuContainer/ScrollContainer"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 1174.0
+margin_bottom = 1409.0
+size_flags_horizontal = 3
+
+[node name="ProgrammerHeader" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_right = 1170.0
+margin_bottom = 39.0
+custom_fonts/font = ExtResource( 5 )
+text = "For mom"
+align = 1
+valign = 1
+
+[node name="Designer2" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 43.0
+margin_right = 1170.0
+margin_bottom = 68.0
+text = "You'll be missed, always."
+align = 1
+valign = 1
+
+[node name="Spacer0" type="Control" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 72.0
+margin_right = 1170.0
+margin_bottom = 92.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="DesignerHeader" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 96.0
+margin_right = 1170.0
+margin_bottom = 135.0
+custom_fonts/font = ExtResource( 5 )
+text = "Art, Design, & Gameplay"
+align = 1
+valign = 1
+
+[node name="Designer" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 139.0
+margin_right = 1170.0
+margin_bottom = 164.0
+text = "Gardiner Bryant"
+align = 1
+valign = 1
+
+[node name="Spacer1" type="Control" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 168.0
+margin_right = 1170.0
+margin_bottom = 188.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="DesignerHeader2" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 192.0
+margin_right = 1170.0
+margin_bottom = 231.0
+custom_fonts/font = ExtResource( 5 )
+text = "Additional Artwork"
+align = 1
+valign = 1
+
+[node name="Designer3" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 235.0
+margin_right = 1170.0
+margin_bottom = 260.0
+text = "Emily Simonton"
+align = 1
+valign = 1
+
+[node name="Spacer16" type="Control" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 264.0
+margin_right = 1170.0
+margin_bottom = 284.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="SoundtrackHeader" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 288.0
+margin_right = 1170.0
+margin_bottom = 327.0
+custom_fonts/font = ExtResource( 5 )
+text = "Soundtrack"
+align = 1
+valign = 1
+
+[node name="Soundtrack" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 331.0
+margin_right = 1170.0
+margin_bottom = 356.0
+text = "The Brothers Nylon"
+align = 1
+valign = 1
+
+[node name="Spacer2" type="Control" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 360.0
+margin_right = 1170.0
+margin_bottom = 380.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="AnnouncersHeader" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 384.0
+margin_right = 1170.0
+margin_bottom = 423.0
+custom_fonts/font = ExtResource( 5 )
+text = "Announcers"
+align = 1
+valign = 1
+
+[node name="Announcers" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 427.0
+margin_right = 1170.0
+margin_bottom = 536.0
+text = "Bill Fairchild (NerdNest)
+FanTheDeck
+Emily Simonton
+Gardiner Bryant"
+align = 1
+valign = 1
+
+[node name="Spacer3" type="Control" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 540.0
+margin_right = 1170.0
+margin_bottom = 560.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="ConceptHeader" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 564.0
+margin_right = 1170.0
+margin_bottom = 603.0
+custom_fonts/font = ExtResource( 5 )
+text = "Original Concept"
+align = 1
+valign = 1
+
+[node name="Concept" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 607.0
+margin_right = 1170.0
+margin_bottom = 632.0
+text = "Ephraim Moody"
+align = 1
+valign = 1
+
+[node name="Spacer15" type="Control" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 636.0
+margin_right = 1170.0
+margin_bottom = 656.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="OpenSourceHeader" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 660.0
+margin_right = 1170.0
+margin_bottom = 699.0
+custom_fonts/font = ExtResource( 5 )
+text = "Open Source"
+align = 1
+valign = 1
+
+[node name="OpenSource" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 703.0
+margin_right = 1170.0
+margin_bottom = 756.0
+text = "Godot Engine
+GodotSteam"
+align = 1
+valign = 1
+
+[node name="Spacer17" type="Control" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 760.0
+margin_right = 1170.0
+margin_bottom = 780.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="StockAssets" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 784.0
+margin_right = 1170.0
+margin_bottom = 823.0
+custom_fonts/font = ExtResource( 5 )
+text = "Open Source"
+align = 1
+valign = 1
+
+[node name="StockAssetsDescription" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 827.0
+margin_right = 1170.0
+margin_bottom = 936.0
+text = "Some assets sourced from Pexels
+PT Sans - SIL Open Font License
+DSEG7 Modern Mini - SIL Open Font License
+Roboto Sans - Apache License"
+align = 1
+valign = 1
+
+[node name="Spacer4" type="Control" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 940.0
+margin_right = 1170.0
+margin_bottom = 960.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="NSFThanks" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 964.0
+margin_right = 1170.0
+margin_bottom = 1003.0
+custom_fonts/font = ExtResource( 5 )
+text = "The National Sportsball Federation would like to thank..."
+align = 1
+valign = 1
+
+[node name="NSFThanks2" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 1007.0
+margin_right = 1170.0
+margin_bottom = 1032.0
+text = "Our generous benefactors"
+align = 1
+valign = 1
+
+[node name="Spacer5" type="Control" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 1036.0
+margin_right = 1170.0
+margin_bottom = 1056.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="GardinerThanksHeader" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 1060.0
+margin_right = 1170.0
+margin_bottom = 1099.0
+custom_fonts/font = ExtResource( 5 )
+text = "The Heavy Element team would like to thank..."
+align = 1
+valign = 1
+
+[node name="GardinerTanks0Header" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 1103.0
+margin_right = 1170.0
+margin_bottom = 1133.0
+custom_fonts/font = ExtResource( 6 )
+text = "Emily Simonton"
+align = 1
+valign = 1
+
+[node name="GardinerTanks0Body" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+visible = false
+margin_top = 681.0
+margin_right = 1170.0
+margin_bottom = 706.0
+custom_colors/font_color = Color( 0.172549, 0.509804, 0.47451, 1 )
+text = "Your unwavering support."
+align = 1
+valign = 1
+
+[node name="Spacer6" type="Control" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+visible = false
+margin_top = 710.0
+margin_right = 1170.0
+margin_bottom = 730.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="GardinerTanks1Header" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 1137.0
+margin_right = 1170.0
+margin_bottom = 1167.0
+custom_fonts/font = ExtResource( 6 )
+text = "Kim Perry"
+align = 1
+valign = 1
+
+[node name="GardinerTanks1Body" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+visible = false
+margin_top = 768.0
+margin_right = 1170.0
+margin_bottom = 793.0
+custom_colors/font_color = Color( 0.172549, 0.509804, 0.47451, 1 )
+text = "Believing in my abilities and helping me grow personally & professionally."
+align = 1
+valign = 1
+
+[node name="Spacer7" type="Control" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+visible = false
+margin_top = 797.0
+margin_right = 1170.0
+margin_bottom = 817.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="GardinerTanks2Header" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 1171.0
+margin_right = 1170.0
+margin_bottom = 1201.0
+custom_fonts/font = ExtResource( 6 )
+text = "Jared & Ephraim"
+align = 1
+valign = 1
+
+[node name="GardinerTanks2Body" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+visible = false
+margin_top = 855.0
+margin_right = 1170.0
+margin_bottom = 880.0
+custom_colors/font_color = Color( 0.172549, 0.509804, 0.47451, 1 )
+text = "For being excellent little brothers and your endless creativity."
+align = 1
+valign = 1
+
+[node name="Spacer8" type="Control" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+visible = false
+margin_top = 884.0
+margin_right = 1170.0
+margin_bottom = 904.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="GardinerTanks3Header" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 1205.0
+margin_right = 1170.0
+margin_bottom = 1235.0
+custom_fonts/font = ExtResource( 6 )
+text = "Karl Chocensky"
+align = 1
+valign = 1
+
+[node name="GardinerTanks3Body" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+visible = false
+margin_top = 942.0
+margin_right = 1170.0
+margin_bottom = 967.0
+custom_colors/font_color = Color( 0.172549, 0.509804, 0.47451, 1 )
+text = "For being an amazing friend, a role model of maturity, and an incredible father."
+align = 1
+valign = 1
+
+[node name="Spacer9" type="Control" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+visible = false
+margin_top = 971.0
+margin_right = 1170.0
+margin_bottom = 991.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="GardinerTanks4Header" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+visible = false
+margin_top = 783.0
+margin_right = 1170.0
+margin_bottom = 813.0
+custom_fonts/font = ExtResource( 6 )
+text = "Eli Chocensky: "
+align = 1
+valign = 1
+
+[node name="GardinerTanks4Body" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+visible = false
+margin_top = 1029.0
+margin_right = 1170.0
+margin_bottom = 1054.0
+custom_colors/font_color = Color( 0.172549, 0.509804, 0.47451, 1 )
+text = "For inspiring me to be a better uncle."
+align = 1
+valign = 1
+
+[node name="Spacer10" type="Control" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+visible = false
+margin_top = 1058.0
+margin_right = 1170.0
+margin_bottom = 1078.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="GardinerTanks5Header" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+visible = false
+margin_top = 817.0
+margin_right = 1170.0
+margin_bottom = 847.0
+custom_fonts/font = ExtResource( 6 )
+text = "Anna Leigh Fultz"
+align = 1
+valign = 1
+
+[node name="GardinerTanks5Body" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+visible = false
+margin_top = 1116.0
+margin_right = 1170.0
+margin_bottom = 1141.0
+custom_colors/font_color = Color( 0.172549, 0.509804, 0.47451, 1 )
+text = "For the endless hours of gossip while sharing the \"middle office\"."
+align = 1
+valign = 1
+
+[node name="Spacer11" type="Control" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+visible = false
+margin_top = 1145.0
+margin_right = 1170.0
+margin_bottom = 1165.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="GardinerTanks6Header" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 1239.0
+margin_right = 1170.0
+margin_bottom = 1269.0
+custom_fonts/font = ExtResource( 6 )
+text = "Matt, Sarah, and Natalie"
+align = 1
+valign = 1
+
+[node name="GardinerTanks6Body" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+visible = false
+margin_top = 1203.0
+margin_right = 1170.0
+margin_bottom = 1228.0
+custom_colors/font_color = Color( 0.172549, 0.509804, 0.47451, 1 )
+text = "For your emotional and technical support."
+align = 1
+valign = 1
+
+[node name="Spacer12" type="Control" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+visible = false
+margin_top = 1232.0
+margin_right = 1170.0
+margin_bottom = 1252.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="GardinerTanks7Header" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 1273.0
+margin_right = 1170.0
+margin_bottom = 1303.0
+custom_fonts/font = ExtResource( 6 )
+text = "Maine Small Business Development Centers"
+align = 1
+valign = 1
+
+[node name="GardinerTanks7Header2" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 1307.0
+margin_right = 1170.0
+margin_bottom = 1337.0
+custom_fonts/font = ExtResource( 6 )
+text = "& Coastal Enterprises Institute"
+align = 1
+valign = 1
+
+[node name="GardinerTanks7Body" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+visible = false
+margin_top = 1324.0
+margin_right = 1170.0
+margin_bottom = 1349.0
+custom_colors/font_color = Color( 0.172549, 0.509804, 0.47451, 1 )
+text = "For the business loan that made this all possible."
+align = 1
+valign = 1
+
+[node name="Spacer13" type="Control" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+visible = false
+margin_top = 1324.0
+margin_right = 1170.0
+margin_bottom = 1344.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="GardinerTanks8Header" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 1341.0
+margin_right = 1170.0
+margin_bottom = 1371.0
+custom_fonts/font = ExtResource( 6 )
+text = "Peter​​​​ Piconi"
+align = 1
+valign = 1
+
+[node name="GardinerTanks8Body" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+visible = false
+margin_top = 1411.0
+margin_right = 1170.0
+margin_bottom = 1436.0
+custom_colors/font_color = Color( 0.172549, 0.509804, 0.47451, 1 )
+text = "For being a great coach and helping us nagivate the loan process."
+align = 1
+valign = 1
+
+[node name="Spacer14" type="Control" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+visible = false
+margin_top = 1411.0
+margin_right = 1170.0
+margin_bottom = 1431.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="GardinerTanks9Header" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+margin_top = 1375.0
+margin_right = 1170.0
+margin_bottom = 1405.0
+custom_fonts/font = ExtResource( 6 )
+text = "My Audience on YouTube"
+align = 1
+valign = 1
+
+[node name="GardinerTanks9Header2" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+visible = false
+margin_top = 953.0
+margin_right = 1170.0
+margin_bottom = 983.0
+custom_fonts/font = ExtResource( 6 )
+text = "Our Generous Benefactors"
+align = 1
+valign = 1
+
+[node name="GardinerTanks9Body" type="Label" parent="BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer"]
+visible = false
+margin_top = 1445.0
+margin_right = 1170.0
+margin_bottom = 1470.0
+custom_colors/font_color = Color( 0.172549, 0.509804, 0.47451, 1 )
+text = "For opening doors that would have otherwise been closed to me."
+align = 1
+valign = 1

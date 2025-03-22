@@ -1,0 +1,209 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://GameComponents/GameBalls/game_ball.gd" type="Script" id=1]
+[ext_resource path="res://Assets/GameComponents/GameBalls/audio/balloon_ball_bounce.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Assets/GameComponents/GameBalls/BalloonBall/art/balloon_ball.png" type="Texture" id=3]
+[ext_resource path="res://Assets/GameComponents/GameBalls/art/ball-explosion.png" type="Texture" id=4]
+[ext_resource path="res://Assets/GameComponents/GameBalls/BalloonBall/art/balloon_ball_pop.png" type="Texture" id=5]
+[ext_resource path="res://Assets/GameComponents/GameBalls/audio/balloon-pop.ogg" type="AudioStream" id=6]
+
+[sub_resource type="PhysicsMaterial" id=6]
+resource_local_to_scene = true
+rough = true
+bounce = 0.3
+
+[sub_resource type="CircleShape2D" id=1]
+resource_local_to_scene = true
+radius = 30.0
+
+[sub_resource type="CircleShape2D" id=5]
+resource_local_to_scene = true
+radius = 31.0
+
+[sub_resource type="Animation" id=7]
+resource_name = "Explode"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Despawn:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Despawn:frame_coords")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 1 ), Vector2( 0, 2 ), Vector2( 0, 2 ), Vector2( 0, 2 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("DespawnSound:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:gravity_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ExplosionSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Despawn:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:gravity_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -1.0 ]
+}
+
+[node name="BalloonBall" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 7
+physics_material_override = SubResource( 6 )
+gravity_scale = -1.0
+script = ExtResource( 1 )
+game_ball_type = 3
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( -1, -7 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+offset = Vector2( 1, 5 )
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource( 5 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
+bus = "Sound"
+
+[node name="ExplosionSprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( -2, 1.19209e-07 )
+rotation = 0.0029794
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+vframes = 5
+frame = 3
+
+[node name="Despawn" type="Sprite" parent="."]
+position = Vector2( 1, 1 )
+rotation = 0.0029794
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+hframes = 3
+vframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Explode = SubResource( 7 )
+anims/Idle = SubResource( 8 )
+anims/RESET = SubResource( 9 )
+
+[node name="DespawnSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+bus = "Sound"
