@@ -733,7 +733,11 @@ ogg_vorbis={
 "loop": false
 }
 texture={
+"flags/filter": false,
 "flags/mipmaps": true
+}
+texture_array={
+"flags/filter": false
 }
 
 [input]

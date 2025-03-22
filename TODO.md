@@ -19,6 +19,11 @@ You can join our [Revolt server](https://rvlt.gg/Fd6HtSRj) to message with us di
 - [ ] Proper Linux/Windows ARM64 build of the game
 - [ ] Proper macOS build of the game
 - [ ] Make menu items that will prompt about the retail version reflect that they're unavailable
+- [ ] Rename `SteamWrapper` to `PlatformWrapper` and make it respect the Globals.BuildPlatform value
+- [ ] Add launch paramters
+  - [ ] `--no-news` to prevent the game from reaching out to the news endpoint
+  - [ ] `--no-telemetry` to disable telemetry reporting
+  - [ ] `--platform=<BuildPlatform>` to switch build platforms/disable Steam API
 
 ### Long Term Goals
 - [ ] Port to Godot 4
