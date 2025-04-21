@@ -36,7 +36,7 @@ const MIN_GAME_TYPE = 3
 
 var settings = GameSettingsData.new()
 
-var _is_in_match:bool = false;
+var _is_in_match: bool = false;
 
 # Will be set to InputController.PlayerOptions enum
 var _current_human_player: int = -1
@@ -58,7 +58,7 @@ var game_stats : Dictionary = {
 
 var achievement_progression : Dictionary = {
 	"total_score": 0, # working
-	"mode_0": 0, # Number of times you've played each modes
+	"mode_0": 0, # Number of times you've played each mode
 	"mode_1": 0,
 	"mode_2": 0,
 	"mode_3": 0,

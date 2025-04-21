@@ -10,7 +10,7 @@ var new_indicator := preload("res://GameUI/UnseenNotification/UnseenNotification
 var button_index: int = 0;
 var ui_buttons: Dictionary = {}
 #onready var ui_focused_sound:AudioStreamOGGVorbis = load("res://GameUI/MenuElements/audio/ui_focused.ogg")
-onready var ui_pressed_sound:AudioStreamOGGVorbis = load("res://Assets/GameUI/MenuElements/audio/ui_pressed.ogg")
+onready var ui_pressed_sound: AudioStreamOGGVorbis = load("res://Assets/GameUI/MenuElements/audio/ui_pressed.ogg")
 
 onready var _scroll_container: ScrollContainer = $BackgroundPanel/MenuContainer/ScrollContainer
 onready var _scrollbar: VScrollBar = $BackgroundPanel/MenuContainer/ScrollContainer.get_v_scrollbar()
@@ -19,7 +19,7 @@ onready var button_container = $BackgroundPanel/ButtonOptions/HBoxContainer
 onready var header_label = $BackgroundPanel/MenuContainer/HeaderLabel
 onready var vbox_container = $BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer
 onready var announcement_label = $BackgroundPanel/MenuContainer/ScrollContainer/VBoxContainer/AnnouncementLabel
-onready var whats_new_button:Button = $BackgroundPanel/ButtonOptions/HBoxContainer/WhatsNew
+onready var whats_new_button: Button = $BackgroundPanel/ButtonOptions/HBoxContainer/WhatsNew
 
 func _ready() -> void:
 	# var _a = $BackgroundPanel.connect("clicked_outside", self, "queue_free")
@@ -38,8 +38,8 @@ func populate_button_container() -> void:
 	if(!Globals.hE_announcements): return
 	if(Globals.hE_announcements.empty() == true): return
 	var selected_first_candidate = !DisplayController.seen_whats_new_dialog
-	var event_ending_soon:Dictionary
-	var ending_button:Button
+	var event_ending_soon: Dictionary
+	var ending_button: Button
 	var index_count: int = 0
 	ui_buttons[index_count] = {'button': whats_new_button, 'announcement': {}}
 

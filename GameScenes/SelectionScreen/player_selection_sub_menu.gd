@@ -43,7 +43,7 @@ func _ready() -> void:
 	var timer: SceneTreeTimer = Globals.get_tree().create_timer(0.1)
 	var _z = timer.connect("timeout", self, "set_process", [true])
 
-	# "Unasign" both players.
+	# "Un-assign" both players.
 	InputController.set_player_one_control_option(InputController.PlayerOptions.AI_EASY)
 	InputController.set_player_two_control_option(InputController.PlayerOptions.AI_EASY)
 

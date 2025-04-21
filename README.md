@@ -12,13 +12,13 @@ You'll need a [retail copy of Dudelings: Arcade Sportsball](https://heavy-elemen
 Clone this repo to your PC.
 
 ## Step 2:
-Download the `dudelings-&gt;version>-assets.tar.xz` archive from Itch and extract it to the cloned directory. (Ensure the assets are located at `res://Assets`)
+Download the `dudelings-<version>-assets.tar.xz` archive from Itch and extract it to the cloned directory. (Ensure the assets are located at `res://Assets`)
 
 ## Step 3:
 Launch GodotSteam version 3.6 and import `res://project.godot`
 
 ## Step 4:
-Launch the game using the `Play` button in the top right corner or build the game by goingg to Project -> Export and selecting which platform you want to export to.
+Launch the game using the `Play` button in the top right corner or build the game by going to Project -> Export and selecting which platform you want to export to.
 
 # Contributing
 Our main goals right now:

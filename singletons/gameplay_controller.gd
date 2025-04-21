@@ -16,8 +16,8 @@ const DEFAULT_MIN_GAME_BALLS: int = 1
 const DEFAULT_POINTS_TO_WIN: int = 10
 const DEFAULT_GAME_BALL_SIZE: int = GameBall.GameBallSize.REGULAR
 const DEFAULT_ARENA_PICKUP_SPAWN_RATE: int = AreaPickupSpawningArea.PickupSpawnRate.NORMAL
-const DEFAULT_TIME_LIMIT:int = 5 * 60 # Five min
-const DEFAULT_TIME_GAME:int = 0
+const DEFAULT_TIME_LIMIT: int = 5 * 60 # Five min
+const DEFAULT_TIME_GAME: int = 0
 
 enum Gametypes {
 	MATCH_POINT,

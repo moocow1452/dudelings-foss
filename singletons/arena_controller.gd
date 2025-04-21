@@ -235,7 +235,7 @@ func find_goal_pos(controlling_player: int) -> Vector2:
 			if arena_goal.get_defending_player() == controlling_player:
 				return arena_goal.get_global_position()
 	else:
-		var target_goal:ArenaGoal
+		var target_goal: ArenaGoal
 		for peg_goal in arena_goals:
 			if peg_goal.get_defending_player() == controlling_player && peg_goal.fractional_point_eligible:
 				target_goal = peg_goal

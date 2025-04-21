@@ -1,6 +1,6 @@
 class_name GamePausedMenu
 extends BaseMenu
-# A basic pause menu for in game. The game is automaticaly paused/unpaused when the menu is opened or closed.
+# A basic pause menu for in-game. The game is automatically paused/unpaused when the menu is opened or closed.
 #
 # @author gbryant
 # @copyright 2024 Heavy Element

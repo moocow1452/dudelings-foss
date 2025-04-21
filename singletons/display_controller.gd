@@ -10,14 +10,14 @@ signal show_virtual_gp(mode)
 const DEFAULT_IS_FULLSCREEN: bool = true
 const DEFAULT_IS_BORDERLESS: bool = false
 const DEFAULT_SCREEN_SHAKE_ENABLED: bool = true
-const GAMEPLAY_CHOICES_DEFAULT:bool = false
-const SEEN_WHATS_NEW_DEFAULT:bool = false
+const GAMEPLAY_CHOICES_DEFAULT: bool = false
+const SEEN_WHATS_NEW_DEFAULT: bool = false
 const DEFAULT_DUDELING_JERSEY_INDEX = 0
 
 # If we're on Android, we don't want the CRT filter enabled by default
 var SCANLINE_FILTER_ENABLED_DEFAULT: bool = false if Globals.BUILD_PLATFORM == Globals.BuildPlatform.MOBILE else true
 # If we're on Android, we want the virtual gamepad enabled by default
-var VIRTUAL_GAMEPAD_ENABLED_DEFAULT:bool = true if Globals.BUILD_PLATFORM == Globals.BuildPlatform.MOBILE else false
+var VIRTUAL_GAMEPAD_ENABLED_DEFAULT: bool = true if Globals.BUILD_PLATFORM == Globals.BuildPlatform.MOBILE else false
 
 const VGP_CONTROLLER_MODE = true
 const VGP_NAVIGATION_MODE = false

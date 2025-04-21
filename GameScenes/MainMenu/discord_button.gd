@@ -7,9 +7,9 @@ extends Button
 const FOCUSED_SOUND: AudioStreamOGGVorbis = preload("res://Assets/GameUI/MenuElements/audio/ui_focused.ogg")
 const PRESSED_SOUND: AudioStreamOGGVorbis = preload("res://Assets/GameUI/MenuElements/audio/ui_pressed.ogg")
 onready var sprite = $Sprite
-export var href:String = ""
-export var start_frame:int = 1
-export var hover_frame:int = 0
+export var href: String = ""
+export var start_frame: int = 1
+export var hover_frame: int = 0
 
 func _ready():
 	var _a  = self.connect("mouse_entered", self, "_on_mouse_entered", [true])

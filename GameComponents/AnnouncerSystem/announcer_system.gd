@@ -50,7 +50,7 @@ func _init() -> void:
 	var _i = ArenaController.connect("one_min_warning", self, "_on_one_min_warning")
 
 func make_announcement(announcement_type: int, is_excited: bool = false, override_current: bool = false) -> void:
-	# Don't play if a more important announcment is playing.
+	# Don't play if a more important announcement is playing.
 	if !override_current && _current_announcement_type > -1 && _current_announcement_type <= announcement_type:
 		return
 	
@@ -118,7 +118,7 @@ func _on_goal_scored(scoring_player: int) -> void:
 	if ArenaController.current_game_state_contains(ArenaController.GameState.GAME_OVER):
 		return
 	
-	# Keep from adding interupt to game won announcement.
+	# Keep from adding interrupt to game won announcement.
 	if ArenaController.player_score(scoring_player) == GameplayController.get_points_to_win():
 		return
 
