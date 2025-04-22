@@ -4,8 +4,13 @@
 This is the Dudelings `1.2.1` repo project folder for `Godot 3.6`.
 
 # Running & Building
-In order to run this version of Dudelings, you need [GodotSteam version 3.6](https://github.com/GodotSteam/GodotSteam/releases/tag/v3.28) and the [export templates](https://github.com/GodotSteam/GodotSteam/releases/download/v3.28/godotsteam-g36-s161-gs328-templates.zip).
 
+## Prerequisite 1
+In order to run this version of Dudelings, you need [GodotSteam 3.28 for Godot 3.6](https://github.com/GodotSteam/GodotSteam/releases/tag/v3.28) and the matching [export templates](https://github.com/GodotSteam/GodotSteam/releases/download/v3.28/godotsteam-g36-s161-gs328-templates.zip) (same GitHub release).
+
+If you don't want to change the path in the project file, place the extracted templates archive into the same directory where you are going to clone this repo (see Step 1).
+
+## Prerequisite 2
 You'll need a [retail copy of Dudelings: Arcade Sportsball](https://heavy-element.itch.io/dudelings) in order to debug, run, and build this repo.
 
 ## Step 1:
