@@ -6,9 +6,9 @@ extends DudelingAIInputs
 # @copyright 2024 Heavy Element
 
 
-func _init(target_player: int, trarget_difficulty: int) -> void:
+func _init(target_player: int, target_difficulty: int) -> void:
 	_controlling_player = target_player
-	_ai_difficulty = trarget_difficulty
+	_ai_difficulty = target_difficulty
 	_ai_type = "Balanced"  # FOR DEBUGGING.
 	_update_defend_threshold()
 
