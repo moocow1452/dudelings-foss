@@ -40,8 +40,8 @@ func _telem_confirm(state):
 
 func _dispatch_request_if_necessary() -> void:
 	var now: float = Time.get_unix_time_from_system()
-	var delta:float = now - Globals.hE_announce_last
-	var min_query_time:int = 60 * 60 * 6; # Six hours in seconds
+	var delta: float = now - Globals.hE_announce_last
+	var min_query_time: int = 60 * 60 * 6; # Six hours in seconds
 	if delta > min_query_time: _dispatch_request()
 
 func _http_request_completed(_result, _response_code, headers, body):

@@ -1,6 +1,6 @@
 class_name SceneSwitchingOverlay
 extends CanvasLayer
-# A black canvas overlay that covers the whole screen durring scene transitions.
+# A black canvas overlay that covers the whole screen during scene transitions.
 #
 # @author ethan_hewlett
 # @copyright 2023 Heavy Element
@@ -16,19 +16,19 @@ func _init() -> void:
 	self.set_pause_mode(PAUSE_MODE_PROCESS)
 
 
-# Block inputs durring scene switching.
+# Block inputs during scene switching.
 func _input(_event: InputEvent) -> void:
 	if SceneController.is_switching_scenes():
 		Globals.get_tree().set_input_as_handled()
 
 
-# Block inputs durring scene switching.
+# Block inputs during scene switching.
 func _gui_input(_event: InputEvent) -> void:
 	if SceneController.is_switching_scenes():
 		_fade_color_rect.accept_event()
 
 
-# Block inputs durring scene switching.
+# Block inputs during scene switching.
 func _unhandled_input(_event: InputEvent) -> void:
 	if SceneController.is_switching_scenes():
 		Globals.get_tree().set_input_as_handled()
@@ -60,6 +60,6 @@ func _make_fade_color_rect() -> ColorRect:
 	fade_color_rect.set_frame_color(Color(0.0, 0.0, 0.0, 0.0))
 	fade_color_rect.set_anchors_and_margins_preset(Control.PRESET_WIDE)
 	fade_color_rect.set_focus_mode(Control.FOCUS_ALL)
-	fade_color_rect.set_mouse_filter(Control.MOUSE_FILTER_STOP)  # Block mouse input durring scene switching.
-	fade_color_rect.call_deferred("grab_focus")  # Keep focus durring scene transitions.
+	fade_color_rect.set_mouse_filter(Control.MOUSE_FILTER_STOP)  # Block mouse input during scene switching.
+	fade_color_rect.call_deferred("grab_focus")  # Keep focus during scene transitions.
 	return fade_color_rect

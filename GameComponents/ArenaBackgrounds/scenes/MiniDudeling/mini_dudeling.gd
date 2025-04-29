@@ -1,7 +1,7 @@
 tool
 class_name MiniDudeling
 extends Sprite
-# A small dudeling. The dudeling is controlled by a crowed controller.
+# A small dudeling. The dudeling is controlled by a crowd controller.
 #
 # @author ethan_hewlett
 # @copyright 2024 Heavy Element

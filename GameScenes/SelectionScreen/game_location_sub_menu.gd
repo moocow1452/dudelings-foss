@@ -1,6 +1,6 @@
 class_name GameLocationSubMenu
 extends SubMenu
-# A sub menu to choose the game loaction.
+# A sub menu to choose the game location.
 #
 # @author ethan_hewlett
 # @copyright 2024 Heavy Element

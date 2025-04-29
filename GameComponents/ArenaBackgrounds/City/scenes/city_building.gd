@@ -1,6 +1,6 @@
 class_name CityBuilding
 extends Node2D
-# An arena background object that can turn off and on its lights as well as flash them.
+# An arena background object that can turn its lights off and on as well as flash them.
 #
 # @author ethan_hewlett
 # @copyright 2024 Heavy Element

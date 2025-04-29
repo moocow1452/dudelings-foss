@@ -1,6 +1,6 @@
 class_name UILayer
 extends CanvasLayer
-# This is the in game canvase layer that all the player ui is on.
+# This is the in-game canvas layer that all the player UI is on.
 #
 # @author ethan_hewlett
 # @copyright 2024 Heavy Element

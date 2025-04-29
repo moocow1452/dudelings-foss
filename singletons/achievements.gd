@@ -63,7 +63,7 @@ func _on_award_endgame() -> void:
 
 func _award_achievement(achievement_id):
 	print("Awarding Steam achievement \"%s\"" % achievement_id)
-    # Pass the value to Steam then fire it
+	# Pass the value to Steam then fire it
 	SteamWrapper.setAchievement(achievement_id)
 	var _a = SteamWrapper.storeStats()
 

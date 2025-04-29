@@ -1,7 +1,7 @@
 class_name GameField
 extends Node2D
 # This script gets attached to a game field scene and controls the flow of the game. All the
-# node referencs need to be added into the target scene by hand.
+# node references need to be added into the target scene by hand.
 #
 # @author ethan_hewlett
 # @copyright 2024 Heavy Element

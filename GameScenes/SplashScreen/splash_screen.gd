@@ -11,7 +11,7 @@ const DUDELINGS_LOGO_VIDEO: VideoStreamTheora = preload("res://Assets/GameScenes
 
 func _init() -> void:
 	print("SplashScreen started initialization")
-	SceneController._current_scene = self  # Needed for propper initialization.
+	SceneController._current_scene = self  # Needed for proper initialization.
 	InputController.show_mouse_pointer(false)
 
 

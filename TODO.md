@@ -12,7 +12,7 @@ You can join our [Revolt server](https://rvlt.gg/Fd6HtSRj) to message with us di
 - [ ] Add a CTA option mapped to the A button to the `WhatsNewSubMenu`
 - [ ] Add custom button mapping support
 - [ ] Make the context button display at the bottom of the screen in menus so it's more ergonomic to use
-- [ ] Build version 1.2.1 for retail Dudelings after addressing [#fixes](Fixes)
+- [ ] Build version 1.2.1 for retail Dudelings after addressing [Fixes](#Fixes)
   - [ ] Build freeware demo based on 1.2.1 that includes one game mode, one map, and integrate with Steam to buy the full game
   - [ ] Make codebase support the demo assets AND the full game assets
 - [ ] Reorganize files so they're more logically laid out
@@ -66,8 +66,8 @@ You can join our [Revolt server](https://rvlt.gg/Fd6HtSRj) to message with us di
   - [ ] It’s really easy to steal goals on hoop. Maybe if we removed the dudelings directly under the hoop? We could either let the ball fall off the screen in the empty space and spawn a new ball or add some kind of wall that would push the ball over the dudelings (like the net in volley).
 
 ### __v1.4 Steam API__
-- [x] Intigrate steam API.
-- [x] Add steam achievements.
+- [x] Integrate Steam API.
+- [x] Add Steam achievements.
 - [ ] Pause game when Steam overlay is opened.
 
 ### __v1.5 New Content__
